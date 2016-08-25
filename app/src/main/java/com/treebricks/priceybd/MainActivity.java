@@ -1,10 +1,8 @@
 package com.treebricks.priceybd;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,12 +11,16 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.RelativeLayout;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.Toast;
 
-import com.treebricks.priceybd.banner.BannerAdapter;
+import com.jude.rollviewpager.OnItemClickListener;
+import com.jude.rollviewpager.RollPagerView;
+import com.jude.rollviewpager.adapter.LoopPagerAdapter;
+import com.treebricks.priceybd.adapters.RecyclerAdapter;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -29,21 +31,43 @@ public class MainActivity extends AppCompatActivity
             "http://cdn2.gsmarena.com/vv/pics/apple/apple-iphone-6s-1.jpg"
     };
 
-    int[] drawableImages = {
+    int[] devicesImages = {
             R.drawable.note7,
             R.drawable.iphone_se,
-            R.drawable.iphone_6s
-    };
-    String[] names = {
-            "Samsung Galaxy Note 7",
-            "IPhone SE",
-            "IPhone 6S"
+            R.drawable.iphone_6s,
+            R.drawable.redmi_note4,
+            R.drawable.lg_v20r
     };
 
-    RelativeLayout root;
-    RecyclerView bannerRecyclerView;
-    Handler handler;
-    int counter = 0;
+    int[] bannerImages = {
+            R.drawable.power_bank,
+            R.drawable.cover_photo
+    };
+
+    int[] brandImages = {
+            R.drawable.samsung,
+            R.drawable.sony,
+            R.drawable.lg,
+            R.drawable.htc
+    };
+
+    String[] brandNames = {
+            "Samsung",
+            "Sony",
+            "LG",
+            "HTC"
+    };
+
+    String[] devicesNames = {
+            "Samsung Galaxy Note 7",
+            "IPhone SE",
+            "IPhone 6S",
+            "Xiaomi Redmi Note 4",
+            "LG V20"
+    };
+
+    RecyclerView trendingRecyclerView;
+    RecyclerView brandRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,31 +75,47 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        root = (RelativeLayout) findViewById(R.id.root);
-        bannerRecyclerView = (RecyclerView) findViewById(R.id.banner_recycler_view);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+
+        // RollViewPager for Banners
+        RollPagerView mLoopViewPager = (RollPagerView) findViewById(R.id.banner_view_pager);
+        mLoopViewPager.setHintView(null);
+        mLoopViewPager.setPlayDelay(3000);
+
+        // Adapter for RollViewPager declared below.
+        TestLoopAdapter mLoopAdapter = new TestLoopAdapter(mLoopViewPager);
+        mLoopAdapter.setImgs(bannerImages);
+        mLoopViewPager.setAdapter(mLoopAdapter);
+
+        // RollViewPager onClick Listener
+        mLoopViewPager.setOnItemClickListener(new OnItemClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onItemClick(int position) {
+                Toast.makeText(MainActivity.this,"Item "+position+" clicked",Toast.LENGTH_SHORT).show();
             }
         });
 
 
-        LinearLayoutManager bannerLinearLayoutManager =
+        // Trending RecyclerView
+        trendingRecyclerView = (RecyclerView) findViewById(R.id.trending_recycler_view);
+        LinearLayoutManager trendingLinearLayoutManager =
                 new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
+        trendingRecyclerView.setLayoutManager(trendingLinearLayoutManager);
 
-        bannerRecyclerView.setLayoutManager(bannerLinearLayoutManager);
+        // Trending Adapter takes Drawable images and string array
+        RecyclerAdapter trendingAdapter = new RecyclerAdapter(this, devicesImages, devicesNames);
+        trendingRecyclerView.setAdapter(trendingAdapter);
 
-        BannerAdapter bannerAdapter = new BannerAdapter(this, drawableImages);
 
-        bannerRecyclerView.setAdapter(bannerAdapter);
+        // Brand RecyclerView
+        brandRecyclerView = (RecyclerView) findViewById(R.id.brand_recycler_view);
+        LinearLayoutManager brandLayoutManager =
+                new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
+        brandRecyclerView.setLayoutManager(brandLayoutManager);
 
-        handler = new Handler();
-
-        startRepeatingTask();
+        // Brand Adapter takes Drawable images and string array
+        RecyclerAdapter brandAdapter = new RecyclerAdapter(this, brandImages, brandNames);
+        brandRecyclerView.setAdapter(brandAdapter);
 
 
         // Navigation Drawer
@@ -89,39 +129,6 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    Runnable runnableCode = new Runnable() {
-        @Override
-        public void run() {
-            try{
-                bannerRecyclerView.scrollToPosition(counter);
-            }finally {
-                counter++;
-                if(counter > images.length-1)
-                {
-                    counter = 0;
-                }
-                Log.d("Runnable", "Runable Repeting");
-                handler.postDelayed(runnableCode, 5000);
-            }
-        }
-    };
-
-    void startRepeatingTask() {
-        Log.d("Runnable", "Runable Started");
-        runnableCode.run();
-    }
-
-    void stopRepeatingTask() {
-        Log.d("Runnable", "Runable removed");
-        handler.removeCallbacks(runnableCode);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        stopRepeatingTask();
-    }
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -130,28 +137,6 @@ public class MainActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -177,5 +162,45 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+    // TestLoopAdapter for RollViewPager Which is used for Home Page banner
+    private class TestLoopAdapter extends LoopPagerAdapter {
+        int[] imgs;
+
+        public void setImgs(int[] imgs){
+            this.imgs = imgs;
+            notifyDataSetChanged();
+        }
+
+
+        public TestLoopAdapter(RollPagerView viewPager) {
+            super(viewPager);
+        }
+
+        @Override
+        public View getView(ViewGroup container, int position) {
+            Log.i("RollViewPager","getView:"+imgs[position]);
+
+            ImageView view = new ImageView(container.getContext());
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.i("RollViewPager","onClick");
+                }
+            });
+            view.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+            view.setImageDrawable(ResourcesCompat.getDrawable(getResources(), imgs[position], null));
+
+            return view;
+        }
+
+        @Override
+        public int getRealCount() {
+            return imgs.length;
+        }
+
     }
 }
