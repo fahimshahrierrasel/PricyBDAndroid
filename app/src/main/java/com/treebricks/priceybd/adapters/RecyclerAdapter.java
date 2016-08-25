@@ -1,6 +1,8 @@
 package com.treebricks.priceybd.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.treebricks.priceybd.DeviceActivity;
 import com.treebricks.priceybd.R;
 
 /**
@@ -17,6 +20,8 @@ import com.treebricks.priceybd.R;
  */
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.SimpleViewHolder> {
 
+    public static final String DEVICE_NAME = "DEVICE_NAME";
+    public static final String DEVICE_IMAGE = "DEVICE_IMAGE";
     private Context context;
     private int[] images;
     private String[] texts;
@@ -54,6 +59,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Simple
             @Override
             public void onClick(View view) {
                 Toast.makeText(context, "Position =" + position, Toast.LENGTH_SHORT).show();
+                Bundle sentBundle = new Bundle();
+                sentBundle.putString(DEVICE_NAME, texts[position]);
+                sentBundle.putInt(DEVICE_IMAGE, images[position]);
+                Intent deviceIntent = new Intent(context, DeviceActivity.class);
+                deviceIntent.putExtras(sentBundle);
+                context.startActivity(deviceIntent);
             }
         });
     }
