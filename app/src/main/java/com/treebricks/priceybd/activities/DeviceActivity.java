@@ -1,4 +1,4 @@
-package com.treebricks.priceybd;
+package com.treebricks.priceybd.activities;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -21,6 +21,7 @@ import android.widget.RelativeLayout;
 
 import com.flaviofaria.kenburnsview.KenBurnsView;
 import com.squareup.picasso.Picasso;
+import com.treebricks.priceybd.R;
 import com.treebricks.priceybd.fragments.PriceFragment;
 import com.treebricks.priceybd.fragments.SpecificationFragment;
 

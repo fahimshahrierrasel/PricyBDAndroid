@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.squareup.picasso.Picasso;
-import com.treebricks.priceybd.DeviceActivity;
+import com.treebricks.priceybd.activities.DeviceActivity;
 import com.treebricks.priceybd.R;
 import com.treebricks.priceybd.models.MobileShortDetail;
 import java.util.ArrayList;

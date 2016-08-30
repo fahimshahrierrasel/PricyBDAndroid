@@ -1,4 +1,4 @@
-package com.treebricks.priceybd;
+package com.treebricks.priceybd.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.jude.rollviewpager.OnItemClickListener;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.adapter.LoopPagerAdapter;
+import com.treebricks.priceybd.R;
 import com.treebricks.priceybd.adapters.DeviceShortDetailAdapter;
 import com.treebricks.priceybd.models.AllShortDetails;
 import com.treebricks.priceybd.models.MobileShortDetail;
