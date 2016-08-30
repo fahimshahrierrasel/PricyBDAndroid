@@ -3,33 +3,32 @@ package com.treebricks.priceybd.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
+import com.squareup.picasso.Picasso;
 import com.treebricks.priceybd.DeviceActivity;
 import com.treebricks.priceybd.R;
+import com.treebricks.priceybd.models.MobileShortDetail;
+import java.util.ArrayList;
 
 /**
  * Created by fahim on 8/25/16.
  */
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.SimpleViewHolder> {
+public class DeviceShortDetailAdapter extends RecyclerView.Adapter<DeviceShortDetailAdapter.SimpleViewHolder> {
 
     public static final String DEVICE_NAME = "DEVICE_NAME";
     public static final String DEVICE_IMAGE = "DEVICE_IMAGE";
+    public static final String MOBILE_ID = "MOBILE_ID";
     private Context context;
-    private int[] images;
-    private String[] texts;
+    ArrayList<MobileShortDetail> allDevices;
 
-    public RecyclerAdapter(Context context, int[] images, String[] texts) {
+    public DeviceShortDetailAdapter(Context context, ArrayList<MobileShortDetail> allDevices) {
         this.context = context;
-        this.images = images;
-        this.texts = texts;
+        this.allDevices = allDevices;
     }
 
     public static class SimpleViewHolder extends RecyclerView.ViewHolder {
@@ -47,21 +46,22 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Simple
 
     @Override
     public SimpleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        final View view = LayoutInflater.from(this.context).inflate(R.layout.recycler_card_layout,parent, false);
+        final View view = LayoutInflater.from(this.context).inflate(R.layout.short_detail_card,parent, false);
         return new SimpleViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(SimpleViewHolder holder, final int position) {
-        holder.cardImageView.setImageDrawable(ResourcesCompat.getDrawable(context.getResources(), images[position], null));
-        holder.cardText.setText(texts[position]);
+        Picasso.with(context).load(allDevices.get(position).getThumbnail()).into(holder.cardImageView);
+        holder.cardText.setText(allDevices.get(position).getModelName());
         holder.cardImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Position =" + position, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "Position =" + position, Toast.LENGTH_SHORT).show();
                 Bundle sentBundle = new Bundle();
-                sentBundle.putString(DEVICE_NAME, texts[position]);
-                sentBundle.putInt(DEVICE_IMAGE, images[position]);
+                sentBundle.putString(DEVICE_NAME, allDevices.get(position).getModelName());
+                sentBundle.putString(DEVICE_IMAGE, allDevices.get(position).getThumbnail());
+                sentBundle.putInt(MOBILE_ID, position+1);
                 Intent deviceIntent = new Intent(context, DeviceActivity.class);
                 deviceIntent.putExtras(sentBundle);
                 context.startActivity(deviceIntent);
@@ -76,7 +76,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Simple
 
     @Override
     public int getItemCount() {
-        return this.images.length;
+        return this.allDevices.size();
     }
 
 }

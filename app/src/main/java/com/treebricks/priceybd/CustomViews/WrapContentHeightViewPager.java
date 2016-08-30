@@ -1,4 +1,4 @@
-package com.treebricks.priceybd.customView;
+package com.treebricks.priceybd.CustomViews;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;
