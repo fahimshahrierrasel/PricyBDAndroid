@@ -20,7 +20,17 @@ import android.widget.Toast;
 import com.jude.rollviewpager.OnItemClickListener;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.adapter.LoopPagerAdapter;
-import com.treebricks.priceybd.adapters.RecyclerAdapter;
+import com.treebricks.priceybd.adapters.DeviceShortDetailAdapter;
+import com.treebricks.priceybd.models.AllShortDetails;
+import com.treebricks.priceybd.models.MobileShortDetail;
+import com.treebricks.priceybd.rest.ApiClient;
+import com.treebricks.priceybd.rest.ApiInterface;
+
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -103,19 +113,47 @@ public class MainActivity extends AppCompatActivity
         trendingRecyclerView.setLayoutManager(trendingLinearLayoutManager);
 
         // Trending Adapter takes Drawable images and string array
-        RecyclerAdapter trendingAdapter = new RecyclerAdapter(this, devicesImages, devicesNames);
-        trendingRecyclerView.setAdapter(trendingAdapter);
+
 
 
         // Brand RecyclerView
-        brandRecyclerView = (RecyclerView) findViewById(R.id.brand_recycler_view);
+        /*brandRecyclerView = (RecyclerView) findViewById(R.id.brand_recycler_view);
         LinearLayoutManager brandLayoutManager =
                 new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
         brandRecyclerView.setLayoutManager(brandLayoutManager);
 
         // Brand Adapter takes Drawable images and string array
-        RecyclerAdapter brandAdapter = new RecyclerAdapter(this, brandImages, brandNames);
-        brandRecyclerView.setAdapter(brandAdapter);
+        DeviceShortDetailAdapter brandAdapter = new DeviceShortDetailAdapter(this, brandImages, brandNames);
+        brandRecyclerView.setAdapter(brandAdapter);*/
+
+
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+
+        Call<AllShortDetails> call = apiInterface.getAllMobileShortDetail();
+
+        call.enqueue(new Callback<AllShortDetails>() {
+            @Override
+            public void onResponse(Call<AllShortDetails> call, Response<AllShortDetails> response)
+            {
+                ArrayList<MobileShortDetail> allDevices = (ArrayList<MobileShortDetail>) response.body().getDevices();
+
+                DeviceShortDetailAdapter trendingAdapter = new DeviceShortDetailAdapter(MainActivity.this, allDevices);
+                trendingRecyclerView.setAdapter(trendingAdapter);
+                if(allDevices != null)
+                {
+                    Log.d("All Short Devices", "onResponse: " + allDevices.get(0).toString());
+                }
+                else
+                {
+                    Log.d("All Short Devices", "onResponse: " + allDevices.get(0).toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AllShortDetails> call, Throwable t) {
+
+            }
+        });
 
 
         // Navigation Drawer

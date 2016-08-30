@@ -9,7 +9,8 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.content.res.ResourcesCompat;
+import android.support.v4.view.ViewPager;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -19,21 +20,24 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.flaviofaria.kenburnsview.KenBurnsView;
-import com.treebricks.priceybd.customView.MyNestedScrollView;
-import com.treebricks.priceybd.customView.WrapContentHeightViewPager;
+import com.squareup.picasso.Picasso;
+import com.treebricks.priceybd.fragments.PriceFragment;
 import com.treebricks.priceybd.fragments.SpecificationFragment;
 
 
 public class DeviceActivity extends AppCompatActivity {
     public static final String DEVICE_NAME = "DEVICE_NAME";
     public static final String DEVICE_IMAGE = "DEVICE_IMAGE";
+    public static final String MOBILE_ID = "MOBILE_ID";
+    public static final String TAG = "Retrofit Test";
 
     KenBurnsView kbv;
-    int image;
+    String image;
     String title;
+    int mobileId;
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
-    private WrapContentHeightViewPager mViewPager;
+    private ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +46,10 @@ public class DeviceActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        MyNestedScrollView scrollView = (MyNestedScrollView) findViewById (R.id.device_scrollview);
-        scrollView.setFillViewport (true);
+        final NestedScrollView scrollView = (NestedScrollView) findViewById (R.id.device_nestedscrollview);
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-        mViewPager = (WrapContentHeightViewPager) findViewById(R.id.device_viewpager);
+        mViewPager = (ViewPager) findViewById(R.id.device_viewpager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
@@ -56,13 +59,31 @@ public class DeviceActivity extends AppCompatActivity {
         Bundle receivedBundle = getIntent().getExtras();
         if(receivedBundle != null)
         {
-            image = receivedBundle.getInt(DEVICE_IMAGE);
+            image = receivedBundle.getString(DEVICE_IMAGE);
             title = receivedBundle.getString(DEVICE_NAME);
+            mobileId = receivedBundle.getInt(MOBILE_ID);
         }
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                scrollView.scrollTo(0, 0);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+
 
         kbv = (KenBurnsView) findViewById(R.id.kbv_image);
-
-        kbv.setImageDrawable(ResourcesCompat.getDrawable(getResources(),image, null));
+        Picasso.with(DeviceActivity.this).load(image).into(kbv);
         kbv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,7 +99,7 @@ public class DeviceActivity extends AppCompatActivity {
                 });
 
                 ImageView imageView = new ImageView(DeviceActivity.this);
-                imageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), image, null));
+                Picasso.with(view.getContext()).load(image).into(imageView);
 
                 imageView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -93,6 +114,7 @@ public class DeviceActivity extends AppCompatActivity {
                 builder.show();
             }
         });
+
 
 
 
@@ -115,12 +137,27 @@ public class DeviceActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return SpecificationFragment.newInstance(title);
+            Fragment fragment = null;
+            switch (position)
+            {
+                case 0:
+                    fragment = SpecificationFragment.newInstance(mobileId);
+                    break;
+
+                case 1:
+                    fragment = PriceFragment.newInstance(mobileId);
+                    break;
+
+                default:
+                    fragment = SpecificationFragment.newInstance(mobileId);
+                    break;
+            }
+            return fragment;
         }
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
+            // Show 2 total pages.
             return 2;
         }
 

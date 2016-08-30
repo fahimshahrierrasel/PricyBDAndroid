@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    >
+    android:fitsSystemWindows="true">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
@@ -16,7 +15,7 @@
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="250dp"
             android:fitsSystemWindows="true"
             app:contentScrim="@color/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
@@ -24,8 +23,8 @@
             <com.flaviofaria.kenburnsview.KenBurnsView
                 android:id="@+id/kbv_image"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:src="@drawable/cover_photo"/>
+                android:layout_height="match_parent"
+                android:src="@drawable/cover_photo" />
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -39,13 +38,23 @@
         <android.support.design.widget.TabLayout
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            android:background="@color/colorPrimary"
-            app:tabGravity="fill"
-            app:tabMode="fixed"/>
+            android:layout_height="?attr/actionBarSize" />
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_device" />
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/device_nestedscrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <com.treebricks.priceybd.CustomViews.WrapContentHeightViewPager
+            android:id="@+id/device_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </android.support.v4.widget.NestedScrollView>
+
 
 </android.support.design.widget.CoordinatorLayout>
