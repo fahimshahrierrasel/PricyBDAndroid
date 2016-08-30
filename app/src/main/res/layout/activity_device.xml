@@ -49,7 +49,7 @@
         android:fillViewport="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <com.treebricks.priceybd.CustomViews.WrapContentHeightViewPager
+        <com.treebricks.priceybd.customViews.WrapContentHeightViewPager
             android:id="@+id/device_viewpager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
