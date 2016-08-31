@@ -1,5 +1,6 @@
 package com.treebricks.priceybd.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.content.res.ResourcesCompat;
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -36,49 +38,18 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    String[] images = {
-            "http://cdn2.gsmarena.com/vv/bigpic/samsung-galaxy-note7.jpg",
-            "http://cdn2.gsmarena.com/vv/pics/apple/apple-iphone-se-00.jpg",
-            "http://cdn2.gsmarena.com/vv/pics/apple/apple-iphone-6s-1.jpg"
-    };
-
-    int[] devicesImages = {
-            R.drawable.note7,
-            R.drawable.iphone_se,
-            R.drawable.iphone_6s,
-            R.drawable.redmi_note4,
-            R.drawable.lg_v20r
-    };
+    public static final String TITLE = "TITLE";
 
     int[] bannerImages = {
             R.drawable.power_bank,
             R.drawable.cover_photo
     };
 
-    int[] brandImages = {
-            R.drawable.samsung,
-            R.drawable.sony,
-            R.drawable.lg,
-            R.drawable.htc
-    };
-
-    String[] brandNames = {
-            "Samsung",
-            "Sony",
-            "LG",
-            "HTC"
-    };
-
-    String[] devicesNames = {
-            "Samsung Galaxy Note 7",
-            "IPhone SE",
-            "IPhone 6S",
-            "Xiaomi Redmi Note 4",
-            "LG V20"
-    };
 
     RecyclerView trendingRecyclerView;
     RecyclerView brandRecyclerView;
+    Button trendingMoreButton;
+    Button brandMoreButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,7 +84,17 @@ public class MainActivity extends AppCompatActivity
                 new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
         trendingRecyclerView.setLayoutManager(trendingLinearLayoutManager);
 
-        // Trending Adapter takes Drawable images and string array
+
+        trendingMoreButton = (Button) findViewById(R.id.trending_more_button);
+
+        trendingMoreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent allDevicesIntent = new Intent(MainActivity.this, AllDevice.class);
+                allDevicesIntent.putExtra(TITLE, "Trending");
+                startActivity(allDevicesIntent);
+            }
+        });
 
 
 
@@ -128,6 +109,8 @@ public class MainActivity extends AppCompatActivity
         brandRecyclerView.setAdapter(brandAdapter);*/
 
 
+
+
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
         Call<AllShortDetails> call = apiInterface.getAllMobileShortDetail();
@@ -138,16 +121,8 @@ public class MainActivity extends AppCompatActivity
             {
                 ArrayList<MobileShortDetail> allDevices = (ArrayList<MobileShortDetail>) response.body().getDevices();
 
-                DeviceShortDetailAdapter trendingAdapter = new DeviceShortDetailAdapter(MainActivity.this, allDevices);
+                DeviceShortDetailAdapter trendingAdapter = new DeviceShortDetailAdapter(MainActivity.this, allDevices, 6);
                 trendingRecyclerView.setAdapter(trendingAdapter);
-                if(allDevices != null)
-                {
-                    Log.d("All Short Devices", "onResponse: " + allDevices.get(0).toString());
-                }
-                else
-                {
-                    Log.d("All Short Devices", "onResponse: " + allDevices.get(0).toString());
-                }
             }
 
             @Override

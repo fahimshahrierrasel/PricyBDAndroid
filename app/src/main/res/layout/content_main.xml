@@ -31,16 +31,14 @@
             android:textSize="24sp" />
 
         <Button
-            android:layout_width="15dp"
+            android:id="@+id/trending_more_button"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_above="@+id/trending_recycler_view"
             android:layout_alignParentEnd="true"
-            android:layout_below="@id/banner_view_pager"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="200dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/trending"
+            android:layout_below="@+id/banner_view_pager"
             android:background="?attr/selectableItemBackground"
+            android:layout_margin="5dp"
             android:text="More"
             android:textColor="@android:color/holo_blue_bright"
             android:textSize="12sp" />
@@ -63,15 +61,13 @@
             android:textSize="24sp" />
 
         <Button
-            android:layout_width="15dp"
+            android:id="@+id/brand_more_button"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_above="@+id/brand_recycler_view"
             android:layout_alignParentEnd="true"
             android:layout_below="@id/trending_recycler_view"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="200dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/trending"
+            android:layout_margin="5dp"
             android:background="?attr/selectableItemBackground"
             android:text="More"
             android:textColor="@android:color/holo_blue_bright"
