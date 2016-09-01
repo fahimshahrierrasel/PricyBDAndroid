@@ -8,6 +8,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SnapHelper;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +52,7 @@ public class PriceFragment extends Fragment
 
         LinearLayoutManager priceLinearLayoutManager =
                 new LinearLayoutManager(PriceFragment.this.getContext(), LinearLayoutManager.VERTICAL, false);
+
 
         int mobileId = getArguments().getInt(MOBILE_ID);
 

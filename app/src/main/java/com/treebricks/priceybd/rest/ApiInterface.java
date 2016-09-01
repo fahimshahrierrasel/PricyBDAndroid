@@ -1,5 +1,6 @@
 package com.treebricks.priceybd.rest;
 
+import com.treebricks.priceybd.models.AllBrands;
 import com.treebricks.priceybd.models.AllPrices;
 import com.treebricks.priceybd.models.AllShortDetails;
 import com.treebricks.priceybd.models.MobileDetail;
@@ -26,4 +27,7 @@ public interface ApiInterface
 
     @GET("shop/{id}")
     Call<Shop> getshop(@Path("id") int id);
+
+    @GET("brands")
+    Call<AllBrands> getBrands();
 }

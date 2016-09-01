@@ -42,8 +42,6 @@ public class DeviceShortDetailAdapter extends RecyclerView.Adapter<DeviceShortDe
             cardImageView = (ImageView) view.findViewById(R.id.card_image_view);
             cardText = (TextView) view.findViewById(R.id.card_text);
         }
-
-
     }
 
     @Override
