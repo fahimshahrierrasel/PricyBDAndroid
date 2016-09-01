@@ -31,15 +31,13 @@
             android:textSize="24sp" />
 
         <Button
-            android:layout_width="15dp"
+            android:id="@+id/trending_more_button"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_above="@+id/trending_recycler_view"
             android:layout_alignParentEnd="true"
-            android:layout_below="@id/banner_view_pager"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="200dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/trending"
+            android:layout_below="@+id/banner_view_pager"
+            android:layout_margin="5dp"
             android:background="?attr/selectableItemBackground"
             android:text="More"
             android:textColor="@android:color/holo_blue_bright"
@@ -53,25 +51,55 @@
             android:layout_marginTop="10dp" />
 
         <TextView
-            android:id="@+id/brands"
+            android:id="@+id/new_arrival"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/trending_recycler_view"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="New Arrival"
+            android:textSize="24sp" />
+
+
+        <Button
+            android:id="@+id/new_arrival_more_button"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/new_arrival_recycler_view"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/trending_recycler_view"
+            android:layout_margin="5dp"
+            android:background="?attr/selectableItemBackground"
+            android:text="More"
+            android:textColor="@android:color/holo_blue_bright"
+            android:textSize="12sp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/new_arrival_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/new_arrival"
+            android:layout_marginTop="10dp" />
+
+
+        <TextView
+            android:id="@+id/brands"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/new_arrival_recycler_view"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text="Brands"
             android:textSize="24sp" />
 
         <Button
-            android:layout_width="15dp"
+            android:id="@+id/brand_more_button"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_above="@+id/brand_recycler_view"
             android:layout_alignParentEnd="true"
-            android:layout_below="@id/trending_recycler_view"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="200dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/trending"
+            android:layout_below="@id/new_arrival_recycler_view"
+            android:layout_margin="5dp"
             android:background="?attr/selectableItemBackground"
             android:text="More"
             android:textColor="@android:color/holo_blue_bright"
@@ -83,7 +111,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/brands"
             android:layout_marginTop="10dp" />
-
 
     </RelativeLayout>
 

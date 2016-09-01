@@ -25,10 +25,12 @@ public class DeviceShortDetailAdapter extends RecyclerView.Adapter<DeviceShortDe
     public static final String MOBILE_ID = "MOBILE_ID";
     private Context context;
     ArrayList<MobileShortDetail> allDevices;
+    int size;
 
-    public DeviceShortDetailAdapter(Context context, ArrayList<MobileShortDetail> allDevices) {
+    public DeviceShortDetailAdapter(Context context, ArrayList<MobileShortDetail> allDevices, int size) {
         this.context = context;
         this.allDevices = allDevices;
+        this.size = size;
     }
 
     public static class SimpleViewHolder extends RecyclerView.ViewHolder {
@@ -40,8 +42,6 @@ public class DeviceShortDetailAdapter extends RecyclerView.Adapter<DeviceShortDe
             cardImageView = (ImageView) view.findViewById(R.id.card_image_view);
             cardText = (TextView) view.findViewById(R.id.card_text);
         }
-
-
     }
 
     @Override
@@ -76,7 +76,7 @@ public class DeviceShortDetailAdapter extends RecyclerView.Adapter<DeviceShortDe
 
     @Override
     public int getItemCount() {
-        return this.allDevices.size();
+        return size;
     }
 
 }

@@ -1,6 +1,9 @@
 package com.treebricks.priceybd.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.view.GravityCompat;
@@ -8,12 +11,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SnapHelper;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -21,8 +27,11 @@ import com.jude.rollviewpager.OnItemClickListener;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.adapter.LoopPagerAdapter;
 import com.treebricks.priceybd.R;
+import com.treebricks.priceybd.adapters.BrandsAdapter;
 import com.treebricks.priceybd.adapters.DeviceShortDetailAdapter;
+import com.treebricks.priceybd.models.AllBrands;
 import com.treebricks.priceybd.models.AllShortDetails;
+import com.treebricks.priceybd.models.Brand;
 import com.treebricks.priceybd.models.MobileShortDetail;
 import com.treebricks.priceybd.rest.ApiClient;
 import com.treebricks.priceybd.rest.ApiInterface;
@@ -36,49 +45,19 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    String[] images = {
-            "http://cdn2.gsmarena.com/vv/bigpic/samsung-galaxy-note7.jpg",
-            "http://cdn2.gsmarena.com/vv/pics/apple/apple-iphone-se-00.jpg",
-            "http://cdn2.gsmarena.com/vv/pics/apple/apple-iphone-6s-1.jpg"
-    };
-
-    int[] devicesImages = {
-            R.drawable.note7,
-            R.drawable.iphone_se,
-            R.drawable.iphone_6s,
-            R.drawable.redmi_note4,
-            R.drawable.lg_v20r
-    };
+    public static final String TITLE = "TITLE";
 
     int[] bannerImages = {
             R.drawable.power_bank,
             R.drawable.cover_photo
     };
 
-    int[] brandImages = {
-            R.drawable.samsung,
-            R.drawable.sony,
-            R.drawable.lg,
-            R.drawable.htc
-    };
-
-    String[] brandNames = {
-            "Samsung",
-            "Sony",
-            "LG",
-            "HTC"
-    };
-
-    String[] devicesNames = {
-            "Samsung Galaxy Note 7",
-            "IPhone SE",
-            "IPhone 6S",
-            "Xiaomi Redmi Note 4",
-            "LG V20"
-    };
-
     RecyclerView trendingRecyclerView;
     RecyclerView brandRecyclerView;
+    RecyclerView newArrivalRecyclerView;
+    Button trendingMoreButton;
+    Button brandMoreButton;
+    Button newArrivalMoreButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,46 +92,96 @@ public class MainActivity extends AppCompatActivity
                 new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
         trendingRecyclerView.setLayoutManager(trendingLinearLayoutManager);
 
-        // Trending Adapter takes Drawable images and string array
+
+        trendingMoreButton = (Button) findViewById(R.id.trending_more_button);
+
+        trendingMoreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent allDevicesIntent = new Intent(MainActivity.this, AllDevice.class);
+                allDevicesIntent.putExtra(TITLE, "Trending");
+                startActivity(allDevicesIntent);
+            }
+        });
+
+        // New Arrival RecyclerView
+        newArrivalRecyclerView = (RecyclerView) findViewById(R.id.new_arrival_recycler_view);
+        LinearLayoutManager newArrivalLayoutManager =
+                new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
+        newArrivalRecyclerView.setLayoutManager(newArrivalLayoutManager);
+
+
+        newArrivalMoreButton = (Button) findViewById(R.id.new_arrival_more_button);
+        newArrivalMoreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent allDevicesIntent = new Intent(MainActivity.this, AllDevice.class);
+                allDevicesIntent.putExtra(TITLE, "New Arrival");
+                startActivity(allDevicesIntent);
+            }
+        });
 
 
 
         // Brand RecyclerView
-        /*brandRecyclerView = (RecyclerView) findViewById(R.id.brand_recycler_view);
+        brandRecyclerView = (RecyclerView) findViewById(R.id.brand_recycler_view);
         LinearLayoutManager brandLayoutManager =
                 new LinearLayoutManager(MainActivity.this, LinearLayoutManager.HORIZONTAL, false);
         brandRecyclerView.setLayoutManager(brandLayoutManager);
 
-        // Brand Adapter takes Drawable images and string array
-        DeviceShortDetailAdapter brandAdapter = new DeviceShortDetailAdapter(this, brandImages, brandNames);
-        brandRecyclerView.setAdapter(brandAdapter);*/
+
+
 
 
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
-        Call<AllShortDetails> call = apiInterface.getAllMobileShortDetail();
+        Call<AllShortDetails> allDevicesCall = apiInterface.getAllMobileShortDetail();
 
-        call.enqueue(new Callback<AllShortDetails>() {
+        allDevicesCall.enqueue(new Callback<AllShortDetails>() {
             @Override
             public void onResponse(Call<AllShortDetails> call, Response<AllShortDetails> response)
             {
                 ArrayList<MobileShortDetail> allDevices = (ArrayList<MobileShortDetail>) response.body().getDevices();
 
-                DeviceShortDetailAdapter trendingAdapter = new DeviceShortDetailAdapter(MainActivity.this, allDevices);
+                DeviceShortDetailAdapter trendingAdapter = new DeviceShortDetailAdapter(MainActivity.this, allDevices, 6);
+                DeviceShortDetailAdapter newArrivalAdapter = new DeviceShortDetailAdapter(MainActivity.this, allDevices, 6);
+
                 trendingRecyclerView.setAdapter(trendingAdapter);
-                if(allDevices != null)
-                {
-                    Log.d("All Short Devices", "onResponse: " + allDevices.get(0).toString());
-                }
-                else
-                {
-                    Log.d("All Short Devices", "onResponse: " + allDevices.get(0).toString());
-                }
+                newArrivalRecyclerView.setAdapter(newArrivalAdapter);
             }
 
             @Override
             public void onFailure(Call<AllShortDetails> call, Throwable t) {
 
+            }
+        });
+
+        Call<AllBrands> allBrandsCall = apiInterface.getBrands();
+
+        allBrandsCall.enqueue(new Callback<AllBrands>() {
+            @Override
+            public void onResponse(Call<AllBrands> call, Response<AllBrands> response) {
+
+                // Brand Adapter takes Drawable images and string array
+                ArrayList<Brand> allBrands = (ArrayList<Brand>) response.body().getBrands();
+
+                BrandsAdapter brandAdapter = new BrandsAdapter(MainActivity.this, allBrands, allBrands.size());
+                brandRecyclerView.setAdapter(brandAdapter);
+
+            }
+
+            @Override
+            public void onFailure(Call<AllBrands> call, Throwable t) {
+
+            }
+        });
+
+        brandMoreButton = (Button) findViewById(R.id.brand_more_button);
+
+        brandMoreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "All Brands Avilable soon!", Toast.LENGTH_SHORT).show();
             }
         });
 
