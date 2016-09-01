@@ -5,8 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toolbar;
+import android.view.View;
 
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 import com.treebricks.priceybd.R;
 import com.treebricks.priceybd.adapters.DeviceShortDetailAdapter;
 import com.treebricks.priceybd.models.AllShortDetails;
@@ -26,12 +28,18 @@ public class AllDevice extends AppCompatActivity {
     public static final String TITLE = "TITLE";
     RecyclerView allDevicesGridRecycler;
     String title;
+    FloatingActionMenu fabMenu;
+    FloatingActionButton fab1,fab2,fab3;
+
+    View mShadowView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alldevice);
+
+        mShadowView = findViewById(R.id.shadowView);
 
         title = getIntent().getStringExtra(TITLE);
 
@@ -70,6 +78,22 @@ public class AllDevice extends AppCompatActivity {
 
             }
         });
+
+        fabMenu = (FloatingActionMenu) findViewById(R.id.menu);
+
+        fabMenu.setOnMenuToggleListener(new FloatingActionMenu.OnMenuToggleListener() {
+            @Override
+            public void onMenuToggle(boolean opened) {
+                if(fabMenu.isOpened())
+                {
+                    mShadowView.setVisibility(View.VISIBLE);
+                }
+                else {
+                    mShadowView.setVisibility(View.GONE);
+                }
+            }
+        });
+
 
     }
 
