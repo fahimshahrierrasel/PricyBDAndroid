@@ -48,7 +48,7 @@ public class BrandsAdapter extends RecyclerView.Adapter<BrandsAdapter.SimpleView
     @Override
     public void onBindViewHolder(SimpleViewHolder holder, final int position) {
 
-        Picasso.with(context).load(allBrands.get(position).getBrandImg()).into(holder.cardImageView);
+        Picasso.with(context).load(allBrands.get(position).getBrandImage()).into(holder.cardImageView);
         holder.cardText.setText(allBrands.get(position).getBrandName());
         holder.cardImageView.setOnClickListener(new View.OnClickListener() {
             @Override

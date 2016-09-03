@@ -8,159 +8,246 @@ import com.google.gson.annotations.SerializedName;
 
 public class MobileDetail {
 
-    @SerializedName("MOBILE_ID")
-    private int mobileId;
+    @SerializedName("MobileID")
+    public String mobileID;
+    
+    @SerializedName("Brand")
+    public String brand;
+    
+    @SerializedName("ModelName")
+    public String modelName;
 
-    @SerializedName("BRAND")
-    private String brand;
+    @SerializedName("NetTechnology")
+    public String netTechnology;
+    
+    @SerializedName("2GBands")
+    public String _2GBands;
+    
+    @SerializedName("3GBands")
+    public String _3GBands;
+    
+    @SerializedName("4GBands")
+    public String _4GBands;
+    
+    @SerializedName("Speed")
+    public String speed;
 
-    @SerializedName("MODEL_NAME")
-    private String modelName;
+    @SerializedName("GPRS")
+    public String gPRS;
 
-    @SerializedName("NETWORK")
-    private String network;
+    @SerializedName("EDGE")
+    public String eDGE;
 
-    @SerializedName("LAUNCH")
-    private String launch;
+    @SerializedName("Announced")
+    public String announced;
 
-    @SerializedName("DISPLAY_SIZE")
-    private String displaySize;
+    @SerializedName("Status")
+    public String status;
 
-    @SerializedName("DISPLAY_RESOLUTION")
-    private String displayResolution;
+    @SerializedName("BodyDimensions")
+    public String bodyDimensions;
 
-    @SerializedName("DISPLAY_TYPE")
-    private String displayType;
+    @SerializedName("BodyWeight")
+    public String bodyWeight;
 
-    @SerializedName("SIM_TYPE")
-    private String simType;
+    @SerializedName("SimType")
+    public String simType;
 
-    @SerializedName("WEIGHT")
-    private String weight;
+    @SerializedName("BodyFeatures")
+    public String bodyFeatures;
 
-    @SerializedName("OS")
-    private String os;
+    @SerializedName("DisplayType")
+    public String displayType;
 
-    @SerializedName("CHIPSET")
-    private String chipset;
+    @SerializedName("DisplaySize")
+    public String displaySize;
 
-    @SerializedName("CPU")
-    private String cpu;
+    @SerializedName("DisplayResolution")
+    public String displayResolution;
 
-    @SerializedName("GPU")
-    private String gpu;
+    @SerializedName("DisplayProtection")
+    public String displayProtection;
 
-    @SerializedName("MEMORY_RAM")
-    private String memoryRam;
+    @SerializedName("DisplayFeatures")
+    public String displayFeatures;
 
-    @SerializedName("MEMORY_INTERNAL")
-    private String memoryInternal;
+    @SerializedName("Os")
+    public String os;
 
-    @SerializedName("MEMORY_EXTERNAL")
-    private String memoryExternal;
+    @SerializedName("Chipset")
+    public String chipset;
 
-    @SerializedName("PRIMARY_CAMERA")
-    private String primaryCamera;
+    @SerializedName("CpuType")
+    public String cpuType;
 
-    @SerializedName("SECONDARY_CAMERA")
-    private String secondaryCamera;
+    @SerializedName("Gpu")
+    public String gpu;
 
-    @SerializedName("CAMERA_FEATURES")
-    private String cameraFeatures;
+    @SerializedName("MemoryRam")
+    public String memoryRam;
 
-    @SerializedName("BATTERY_TYPE")
-    private String batteryType;
+    @SerializedName("MemoryOption")
+    public String memoryOption;
 
-    @SerializedName("BLUETOOTH")
-    private String bluetooth;
+    @SerializedName("MemoryExpand")
+    public String memoryExpand;
 
-    @SerializedName("WIFI")
-    private String wifi;
+    @SerializedName("PrimaryCameraFeatures")
+    public String primaryCameraFeatures;
 
-    @SerializedName("NFC")
-    private String nfc;
+    @SerializedName("Video")
+    public String video;
 
-    @SerializedName("OTG")
-    private String otg;
+    @SerializedName("SecondaryCameraFeatures")
+    public String secondaryCameraFeatures;
 
-    @SerializedName("RADIO")
-    private String radio;
+    @SerializedName("CameraFeatures")
+    public String cameraFeatures;
 
-    @SerializedName("GPS")
-    private String gps;
+    @SerializedName("SoundAlertTypes")
+    public String soundAlertTypes;
 
-    @SerializedName("USB")
-    private String usb;
+    @SerializedName("SoundLoudspeaker")
+    public String soundLoudspeaker;
 
-    @SerializedName("SENSORS")
-    private String sensors;
+    @SerializedName("SoundJack")
+    public String soundJack;
 
-    @SerializedName("COLORS")
-    private String colors;
+    @SerializedName("SoundFeatures")
+    public String soundFeatures;
 
-    @SerializedName("DIMENSIONS")
-    private String dimensions;
+    @SerializedName("Wifi")
+    public String wifi;
 
-    @SerializedName("PHOTO")
-    private String photo;
+    @SerializedName("Bluetooth")
+    public String bluetooth;
 
-    @SerializedName("THUMBNAIL")
-    private String thumbnail;
+    @SerializedName("Gps")
+    public String gps;
+
+    @SerializedName("Nfc")
+    public String nfc;
+
+    @SerializedName("Radio")
+    public String radio;
+
+    @SerializedName("Usb")
+    public String usb;
+
+    @SerializedName("Sensors")
+    public String sensors;
+
+    @SerializedName("Messaging")
+    public String messaging;
+
+    @SerializedName("Browser")
+    public String browser;
+
+    @SerializedName("Java")
+    public String mJava;
+
+    @SerializedName("OtherFeatures")
+    public String otherFeatures;
+
+    @SerializedName("BatteryType")
+    public String batteryType;
+
+    @SerializedName("BatteryCapacity")
+    public String batteryCapacity;
+
+    @SerializedName("BatteryTalktime")
+    public String batteryTalktime;
+
+    @SerializedName("BatteryMusicplay")
+    public String batteryMusicplay;
+
+    @SerializedName("Colors")
+    public String colors;
+
+    @SerializedName("Performance")
+    public String performance;
+
+    @SerializedName("Photo")
+    public String photo;
 
     public MobileDetail() {
     }
 
-    public MobileDetail(int mobileId, String brand, String modelName, String network,
-                        String launch, String displaySize, String displayResolution,
-                        String displayType, String simType, String weight, String os,
-                        String chipset, String cpu, String gpu, String memoryRam,
-                        String memoryInternal, String memoryExternal, String primaryCamera,
-                        String secondaryCamera, String cameraFeatures, String batteryType,
-                        String bluetooth, String wifi, String nfc, String otg, String radio,
-                        String gps, String usb, String sensors, String colors, String dimensions,
-                        String photo, String thumbnail)
-    {
-        this.mobileId = mobileId;
+    public MobileDetail(String mobileID, String brand, String modelName, String netTechnology,
+                        String _2GBands, String _3GBands, String _4GBands, String speed, String gPRS,
+                        String eDGE, String announced, String status, String bodyDimensions,
+                        String bodyWeight, String simType, String bodyFeatures, String displayType,
+                        String displaySize, String displayResolution, String displayProtection,
+                        String displayFeatures, String os, String chipset, String cpuType, String gpu,
+                        String memoryRam, String memoryOption, String memoryExpand, String primaryCameraFeatures,
+                        String video, String secondaryCameraFeatures, String cameraFeatures, String soundAlertTypes,
+                        String soundLoudspeaker, String soundJack, String soundFeatures, String wifi, String bluetooth,
+                        String gps, String nfc, String radio, String usb, String sensors, String messaging,
+                        String browser, String mJava, String otherFeatures, String batteryType,
+                        String batteryCapacity, String batteryTalktime, String batteryMusicplay,
+                        String colors, String performance, String photo) {
+        this.mobileID = mobileID;
         this.brand = brand;
         this.modelName = modelName;
-        this.network = network;
-        this.launch = launch;
+        this.netTechnology = netTechnology;
+        this._2GBands = _2GBands;
+        this._3GBands = _3GBands;
+        this._4GBands = _4GBands;
+        this.speed = speed;
+        this.gPRS = gPRS;
+        this.eDGE = eDGE;
+        this.announced = announced;
+        this.status = status;
+        this.bodyDimensions = bodyDimensions;
+        this.bodyWeight = bodyWeight;
+        this.simType = simType;
+        this.bodyFeatures = bodyFeatures;
+        this.displayType = displayType;
         this.displaySize = displaySize;
         this.displayResolution = displayResolution;
-        this.displayType = displayType;
-        this.simType = simType;
-        this.weight = weight;
+        this.displayProtection = displayProtection;
+        this.displayFeatures = displayFeatures;
         this.os = os;
         this.chipset = chipset;
-        this.cpu = cpu;
+        this.cpuType = cpuType;
         this.gpu = gpu;
         this.memoryRam = memoryRam;
-        this.memoryInternal = memoryInternal;
-        this.memoryExternal = memoryExternal;
-        this.primaryCamera = primaryCamera;
-        this.secondaryCamera = secondaryCamera;
+        this.memoryOption = memoryOption;
+        this.memoryExpand = memoryExpand;
+        this.primaryCameraFeatures = primaryCameraFeatures;
+        this.video = video;
+        this.secondaryCameraFeatures = secondaryCameraFeatures;
         this.cameraFeatures = cameraFeatures;
-        this.batteryType = batteryType;
-        this.bluetooth = bluetooth;
+        this.soundAlertTypes = soundAlertTypes;
+        this.soundLoudspeaker = soundLoudspeaker;
+        this.soundJack = soundJack;
+        this.soundFeatures = soundFeatures;
         this.wifi = wifi;
-        this.nfc = nfc;
-        this.otg = otg;
-        this.radio = radio;
+        this.bluetooth = bluetooth;
         this.gps = gps;
+        this.nfc = nfc;
+        this.radio = radio;
         this.usb = usb;
         this.sensors = sensors;
+        this.messaging = messaging;
+        this.browser = browser;
+        this.mJava = mJava;
+        this.otherFeatures = otherFeatures;
+        this.batteryType = batteryType;
+        this.batteryCapacity = batteryCapacity;
+        this.batteryTalktime = batteryTalktime;
+        this.batteryMusicplay = batteryMusicplay;
         this.colors = colors;
-        this.dimensions = dimensions;
+        this.performance = performance;
         this.photo = photo;
-        this.thumbnail = thumbnail;
     }
 
-    public int getMobileId() {
-        return mobileId;
+    public String getMobileID() {
+        return mobileID;
     }
 
-    public void setMobileId(int mobileId) {
-        this.mobileId = mobileId;
+    public void setMobileID(String mobileID) {
+        this.mobileID = mobileID;
     }
 
     public String getBrand() {
@@ -179,20 +266,116 @@ public class MobileDetail {
         this.modelName = modelName;
     }
 
-    public String getNetwork() {
-        return network;
+    public String getNetTechnology() {
+        return netTechnology;
     }
 
-    public void setNetwork(String network) {
-        this.network = network;
+    public void setNetTechnology(String netTechnology) {
+        this.netTechnology = netTechnology;
     }
 
-    public String getLaunch() {
-        return launch;
+    public String get_2GBands() {
+        return _2GBands;
     }
 
-    public void setLaunch(String launch) {
-        this.launch = launch;
+    public void set_2GBands(String _2GBands) {
+        this._2GBands = _2GBands;
+    }
+
+    public String get_3GBands() {
+        return _3GBands;
+    }
+
+    public void set_3GBands(String _3GBands) {
+        this._3GBands = _3GBands;
+    }
+
+    public String get_4GBands() {
+        return _4GBands;
+    }
+
+    public void set_4GBands(String _4GBands) {
+        this._4GBands = _4GBands;
+    }
+
+    public String getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(String speed) {
+        this.speed = speed;
+    }
+
+    public String getgPRS() {
+        return gPRS;
+    }
+
+    public void setgPRS(String gPRS) {
+        this.gPRS = gPRS;
+    }
+
+    public String geteDGE() {
+        return eDGE;
+    }
+
+    public void seteDGE(String eDGE) {
+        this.eDGE = eDGE;
+    }
+
+    public String getAnnounced() {
+        return announced;
+    }
+
+    public void setAnnounced(String announced) {
+        this.announced = announced;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getBodyDimensions() {
+        return bodyDimensions;
+    }
+
+    public void setBodyDimensions(String bodyDimensions) {
+        this.bodyDimensions = bodyDimensions;
+    }
+
+    public String getBodyWeight() {
+        return bodyWeight;
+    }
+
+    public void setBodyWeight(String bodyWeight) {
+        this.bodyWeight = bodyWeight;
+    }
+
+    public String getSimType() {
+        return simType;
+    }
+
+    public void setSimType(String simType) {
+        this.simType = simType;
+    }
+
+    public String getBodyFeatures() {
+        return bodyFeatures;
+    }
+
+    public void setBodyFeatures(String bodyFeatures) {
+        this.bodyFeatures = bodyFeatures;
+    }
+
+    public String getDisplayType() {
+        return displayType;
+    }
+
+    public void setDisplayType(String displayType) {
+        this.displayType = displayType;
     }
 
     public String getDisplaySize() {
@@ -211,28 +394,20 @@ public class MobileDetail {
         this.displayResolution = displayResolution;
     }
 
-    public String getDisplayType() {
-        return displayType;
+    public String getDisplayProtection() {
+        return displayProtection;
     }
 
-    public void setDisplayType(String displayType) {
-        this.displayType = displayType;
+    public void setDisplayProtection(String displayProtection) {
+        this.displayProtection = displayProtection;
     }
 
-    public String getSimType() {
-        return simType;
+    public String getDisplayFeatures() {
+        return displayFeatures;
     }
 
-    public void setSimType(String simType) {
-        this.simType = simType;
-    }
-
-    public String getWeight() {
-        return weight;
-    }
-
-    public void setWeight(String weight) {
-        this.weight = weight;
+    public void setDisplayFeatures(String displayFeatures) {
+        this.displayFeatures = displayFeatures;
     }
 
     public String getOs() {
@@ -251,12 +426,12 @@ public class MobileDetail {
         this.chipset = chipset;
     }
 
-    public String getCpu() {
-        return cpu;
+    public String getCpuType() {
+        return cpuType;
     }
 
-    public void setCpu(String cpu) {
-        this.cpu = cpu;
+    public void setCpuType(String cpuType) {
+        this.cpuType = cpuType;
     }
 
     public String getGpu() {
@@ -275,36 +450,44 @@ public class MobileDetail {
         this.memoryRam = memoryRam;
     }
 
-    public String getMemoryInternal() {
-        return memoryInternal;
+    public String getMemoryOption() {
+        return memoryOption;
     }
 
-    public void setMemoryInternal(String memoryInternal) {
-        this.memoryInternal = memoryInternal;
+    public void setMemoryOption(String memoryOption) {
+        this.memoryOption = memoryOption;
     }
 
-    public String getMemoryExternal() {
-        return memoryExternal;
+    public String getMemoryExpand() {
+        return memoryExpand;
     }
 
-    public void setMemoryExternal(String memoryExternal) {
-        this.memoryExternal = memoryExternal;
+    public void setMemoryExpand(String memoryExpand) {
+        this.memoryExpand = memoryExpand;
     }
 
-    public String getPrimaryCamera() {
-        return primaryCamera;
+    public String getPrimaryCameraFeatures() {
+        return primaryCameraFeatures;
     }
 
-    public void setPrimaryCamera(String primaryCamera) {
-        this.primaryCamera = primaryCamera;
+    public void setPrimaryCameraFeatures(String primaryCameraFeatures) {
+        this.primaryCameraFeatures = primaryCameraFeatures;
     }
 
-    public String getSecondaryCamera() {
-        return secondaryCamera;
+    public String getVideo() {
+        return video;
     }
 
-    public void setSecondaryCamera(String secondaryCamera) {
-        this.secondaryCamera = secondaryCamera;
+    public void setVideo(String video) {
+        this.video = video;
+    }
+
+    public String getSecondaryCameraFeatures() {
+        return secondaryCameraFeatures;
+    }
+
+    public void setSecondaryCameraFeatures(String secondaryCameraFeatures) {
+        this.secondaryCameraFeatures = secondaryCameraFeatures;
     }
 
     public String getCameraFeatures() {
@@ -315,20 +498,36 @@ public class MobileDetail {
         this.cameraFeatures = cameraFeatures;
     }
 
-    public String getBatteryType() {
-        return batteryType;
+    public String getSoundAlertTypes() {
+        return soundAlertTypes;
     }
 
-    public void setBatteryType(String batteryType) {
-        this.batteryType = batteryType;
+    public void setSoundAlertTypes(String soundAlertTypes) {
+        this.soundAlertTypes = soundAlertTypes;
     }
 
-    public String getBluetooth() {
-        return bluetooth;
+    public String getSoundLoudspeaker() {
+        return soundLoudspeaker;
     }
 
-    public void setBluetooth(String bluetooth) {
-        this.bluetooth = bluetooth;
+    public void setSoundLoudspeaker(String soundLoudspeaker) {
+        this.soundLoudspeaker = soundLoudspeaker;
+    }
+
+    public String getSoundJack() {
+        return soundJack;
+    }
+
+    public void setSoundJack(String soundJack) {
+        this.soundJack = soundJack;
+    }
+
+    public String getSoundFeatures() {
+        return soundFeatures;
+    }
+
+    public void setSoundFeatures(String soundFeatures) {
+        this.soundFeatures = soundFeatures;
     }
 
     public String getWifi() {
@@ -339,28 +538,12 @@ public class MobileDetail {
         this.wifi = wifi;
     }
 
-    public String getNfc() {
-        return nfc;
+    public String getBluetooth() {
+        return bluetooth;
     }
 
-    public void setNfc(String nfc) {
-        this.nfc = nfc;
-    }
-
-    public String getOtg() {
-        return otg;
-    }
-
-    public void setOtg(String otg) {
-        this.otg = otg;
-    }
-
-    public String getRadio() {
-        return radio;
-    }
-
-    public void setRadio(String radio) {
-        this.radio = radio;
+    public void setBluetooth(String bluetooth) {
+        this.bluetooth = bluetooth;
     }
 
     public String getGps() {
@@ -369,6 +552,22 @@ public class MobileDetail {
 
     public void setGps(String gps) {
         this.gps = gps;
+    }
+
+    public String getNfc() {
+        return nfc;
+    }
+
+    public void setNfc(String nfc) {
+        this.nfc = nfc;
+    }
+
+    public String getRadio() {
+        return radio;
+    }
+
+    public void setRadio(String radio) {
+        this.radio = radio;
     }
 
     public String getUsb() {
@@ -387,6 +586,70 @@ public class MobileDetail {
         this.sensors = sensors;
     }
 
+    public String getMessaging() {
+        return messaging;
+    }
+
+    public void setMessaging(String messaging) {
+        this.messaging = messaging;
+    }
+
+    public String getBrowser() {
+        return browser;
+    }
+
+    public void setBrowser(String browser) {
+        this.browser = browser;
+    }
+
+    public String getmJava() {
+        return mJava;
+    }
+
+    public void setmJava(String mJava) {
+        this.mJava = mJava;
+    }
+
+    public String getOtherFeatures() {
+        return otherFeatures;
+    }
+
+    public void setOtherFeatures(String otherFeatures) {
+        this.otherFeatures = otherFeatures;
+    }
+
+    public String getBatteryType() {
+        return batteryType;
+    }
+
+    public void setBatteryType(String batteryType) {
+        this.batteryType = batteryType;
+    }
+
+    public String getBatteryCapacity() {
+        return batteryCapacity;
+    }
+
+    public void setBatteryCapacity(String batteryCapacity) {
+        this.batteryCapacity = batteryCapacity;
+    }
+
+    public String getBatteryTalktime() {
+        return batteryTalktime;
+    }
+
+    public void setBatteryTalktime(String batteryTalktime) {
+        this.batteryTalktime = batteryTalktime;
+    }
+
+    public String getBatteryMusicplay() {
+        return batteryMusicplay;
+    }
+
+    public void setBatteryMusicplay(String batteryMusicplay) {
+        this.batteryMusicplay = batteryMusicplay;
+    }
+
     public String getColors() {
         return colors;
     }
@@ -395,12 +658,12 @@ public class MobileDetail {
         this.colors = colors;
     }
 
-    public String getDimensions() {
-        return dimensions;
+    public String getPerformance() {
+        return performance;
     }
 
-    public void setDimensions(String dimensions) {
-        this.dimensions = dimensions;
+    public void setPerformance(String performance) {
+        this.performance = performance;
     }
 
     public String getPhoto() {
@@ -409,52 +672,5 @@ public class MobileDetail {
 
     public void setPhoto(String photo) {
         this.photo = photo;
-    }
-
-    public String getThumbnail() {
-        return thumbnail;
-    }
-
-    public void setThumbnail(String thumbnail) {
-        this.thumbnail = thumbnail;
-    }
-
-    @Override
-    public String toString() {
-        return "MobileDetail{" +
-                "mobileId=" + mobileId +
-                ", brand='" + brand + '\'' +
-                ", modelName='" + modelName + '\'' +
-                ", network='" + network + '\'' +
-                ", launch='" + launch + '\'' +
-                ", displaySize='" + displaySize + '\'' +
-                ", displayResolution='" + displayResolution + '\'' +
-                ", displayType='" + displayType + '\'' +
-                ", simType='" + simType + '\'' +
-                ", weight='" + weight + '\'' +
-                ", os='" + os + '\'' +
-                ", chipset='" + chipset + '\'' +
-                ", cpu='" + cpu + '\'' +
-                ", gpu='" + gpu + '\'' +
-                ", memoryRam='" + memoryRam + '\'' +
-                ", memoryInternal='" + memoryInternal + '\'' +
-                ", memoryExternal='" + memoryExternal + '\'' +
-                ", primaryCamera='" + primaryCamera + '\'' +
-                ", secondaryCamera='" + secondaryCamera + '\'' +
-                ", cameraFeatures='" + cameraFeatures + '\'' +
-                ", batteryType='" + batteryType + '\'' +
-                ", bluetooth='" + bluetooth + '\'' +
-                ", wifi='" + wifi + '\'' +
-                ", nfc='" + nfc + '\'' +
-                ", otg='" + otg + '\'' +
-                ", radio='" + radio + '\'' +
-                ", gps='" + gps + '\'' +
-                ", usb='" + usb + '\'' +
-                ", sensors='" + sensors + '\'' +
-                ", colors='" + colors + '\'' +
-                ", dimensions='" + dimensions + '\'' +
-                ", photo='" + photo + '\'' +
-                ", thumbnail='" + thumbnail + '\'' +
-                '}';
     }
 }

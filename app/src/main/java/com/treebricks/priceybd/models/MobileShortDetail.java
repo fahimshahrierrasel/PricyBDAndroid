@@ -7,27 +7,27 @@ import com.google.gson.annotations.SerializedName;
 
 public class MobileShortDetail {
 
-    @SerializedName("MOBILE_ID")
+    @SerializedName("MobileID")
     private String mobileID;
 
-    @SerializedName("BRAND")
+    @SerializedName("Brand")
     private String brand;
 
-    @SerializedName("MODEL_NAME")
+    @SerializedName("ModelName")
     private String modelName;
 
-    @SerializedName("THUMBNAIL")
-    private String thumbnail;
+    @SerializedName("Photo")
+    private String photo;
 
 
     public MobileShortDetail() {
     }
 
-    public MobileShortDetail(String mobileID, String brand, String modelName, String thumbnail) {
+    public MobileShortDetail(String mobileID, String brand, String modelName, String photo) {
         this.mobileID = mobileID;
         this.brand = brand;
         this.modelName = modelName;
-        this.thumbnail = thumbnail;
+        this.photo = photo;
     }
 
     public String getMobileID() {
@@ -54,12 +54,12 @@ public class MobileShortDetail {
         this.modelName = modelName;
     }
 
-    public String getThumbnail() {
-        return thumbnail;
+    public String getPhoto() {
+        return photo;
     }
 
-    public void setThumbnail(String thumbnail) {
-        this.thumbnail = thumbnail;
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     @Override
@@ -68,7 +68,7 @@ public class MobileShortDetail {
                 "mobileID='" + mobileID + '\'' +
                 ", brand='" + brand + '\'' +
                 ", modelName='" + modelName + '\'' +
-                ", thumbnail='" + thumbnail + '\'' +
+                ", photo='" + photo + '\'' +
                 '}';
     }
 }

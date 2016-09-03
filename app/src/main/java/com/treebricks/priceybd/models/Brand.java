@@ -7,22 +7,22 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Brand {
 
-    @SerializedName("BRAND_ID")
+    @SerializedName("BrandID")
     private String brandID;
 
-    @SerializedName("BRAND_NAME")
+    @SerializedName("BrandName")
     private String brandName;
 
-    @SerializedName("BRAND_IMG")
-    private String brandImg;
+    @SerializedName("BrandImage")
+    private String brandImage;
 
     public Brand() {
     }
 
-    public Brand(String brandID, String brandName, String brandImg) {
+    public Brand(String brandID, String brandName, String brandImage) {
         this.brandID = brandID;
         this.brandName = brandName;
-        this.brandImg = brandImg;
+        this.brandImage = brandImage;
     }
 
     public String getBrandID() {
@@ -41,12 +41,12 @@ public class Brand {
         this.brandName = brandName;
     }
 
-    public String getBrandImg() {
-        return brandImg;
+    public String getBrandImage() {
+        return brandImage;
     }
 
-    public void setBrandImg(String brandImg) {
-        this.brandImg = brandImg;
+    public void setBrandImage(String brandImage) {
+        this.brandImage = brandImage;
     }
 
     @Override
@@ -54,7 +54,7 @@ public class Brand {
         return "Brand{" +
                 "brandID='" + brandID + '\'' +
                 ", brandName='" + brandName + '\'' +
-                ", brandImg='" + brandImg + '\'' +
+                ", brandImage='" + brandImage + '\'' +
                 '}';
     }
 }

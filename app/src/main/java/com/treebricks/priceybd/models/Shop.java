@@ -6,25 +6,25 @@ import com.google.gson.annotations.SerializedName;
  * Created by fahim on 8/29/16.
  */
 public class Shop {
-    @SerializedName("SHOP_ID")
+    @SerializedName("ShopID")
     private String shopId;
 
-    @SerializedName("SHOP_NAME")
+    @SerializedName("ShopName")
     private String shopName;
 
-    @SerializedName("SHOP_ADDRESS")
+    @SerializedName("ShopAddress")
     private String shopAddress;
 
-    @SerializedName("SHOP_EMAIL")
+    @SerializedName("ShopEmail")
     private String shopMail;
 
-    @SerializedName("SHOP_MOBILE_NUMBER")
+    @SerializedName("ShopMobileNumber")
     private String shopMobileNumber;
 
-    @SerializedName("LATITUDE")
+    @SerializedName("Latitude")
     private String latitude;
 
-    @SerializedName("LONGITUDE")
+    @SerializedName("Longitude")
     private String longitude;
 
 

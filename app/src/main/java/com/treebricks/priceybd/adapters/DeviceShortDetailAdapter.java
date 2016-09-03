@@ -52,7 +52,7 @@ public class DeviceShortDetailAdapter extends RecyclerView.Adapter<DeviceShortDe
 
     @Override
     public void onBindViewHolder(SimpleViewHolder holder, final int position) {
-        Picasso.with(context).load(allDevices.get(position).getThumbnail()).into(holder.cardImageView);
+        Picasso.with(context).load(allDevices.get(position).getPhoto()).into(holder.cardImageView);
         holder.cardText.setText(allDevices.get(position).getModelName());
         holder.cardImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +60,7 @@ public class DeviceShortDetailAdapter extends RecyclerView.Adapter<DeviceShortDe
                 //Toast.makeText(context, "Position =" + position, Toast.LENGTH_SHORT).show();
                 Bundle sentBundle = new Bundle();
                 sentBundle.putString(DEVICE_NAME, allDevices.get(position).getModelName());
-                sentBundle.putString(DEVICE_IMAGE, allDevices.get(position).getThumbnail());
+                sentBundle.putString(DEVICE_IMAGE, allDevices.get(position).getPhoto());
                 sentBundle.putInt(MOBILE_ID, position+1);
                 Intent deviceIntent = new Intent(context, DeviceActivity.class);
                 deviceIntent.putExtras(sentBundle);

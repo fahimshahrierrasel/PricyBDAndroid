@@ -7,16 +7,16 @@ import com.google.gson.annotations.SerializedName;
  * Created by fahim on 8/29/16.
  */
 public class MobilePrice {
-    @SerializedName("PRICE_ID")
+    @SerializedName("PriceID")
     private String priceID;
 
-    @SerializedName("MOBILE_ID")
+    @SerializedName("MobileID")
     private String mobileID;
 
-    @SerializedName("SHOP_ID")
+    @SerializedName("ShopID")
     private String shopId;
 
-    @SerializedName("PRICE")
+    @SerializedName("Price")
     private String price;
 
     public String getPriceID() {
