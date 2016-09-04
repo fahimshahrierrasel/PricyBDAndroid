@@ -143,8 +143,8 @@ public class MainActivity extends AppCompatActivity
             {
                 ArrayList<MobileShortDetail> allDevices = (ArrayList<MobileShortDetail>) response.body().getDevices();
 
-                DeviceShortDetailAdapter trendingAdapter = new DeviceShortDetailAdapter(MainActivity.this, allDevices, 6);
-                DeviceShortDetailAdapter newArrivalAdapter = new DeviceShortDetailAdapter(MainActivity.this, allDevices, 6);
+                DeviceShortDetailAdapter trendingAdapter = new DeviceShortDetailAdapter(MainActivity.this, allDevices, allDevices.size());
+                DeviceShortDetailAdapter newArrivalAdapter = new DeviceShortDetailAdapter(MainActivity.this, allDevices, allDevices.size());
 
                 trendingRecyclerView.setAdapter(trendingAdapter);
                 newArrivalRecyclerView.setAdapter(newArrivalAdapter);

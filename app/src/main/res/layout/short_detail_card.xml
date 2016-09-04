@@ -28,7 +28,7 @@
 
 
             <TextView
-                android:id="@+id/card_text"
+                android:id="@+id/network_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/card_image_view"

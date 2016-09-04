@@ -5,9 +5,1102 @@
     android:layout_height="wrap_content"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <android.support.v7.widget.RecyclerView
+    <android.support.v7.widget.CardView
+        android:id="@+id/network_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/specificaiton_recycler"/>
+        android:layout_margin="5dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="3dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/network_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="3dp"
+                android:text="NETWORK"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/technology_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/network_header"
+                android:paddingLeft="6dp"
+                android:text="Technology : " />
+
+            <TextView
+                android:id="@+id/technology"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/network_header"
+                android:layout_toEndOf="@+id/technology_title"
+                android:text="GSM / HSPA / LTE" />
+
+            <TextView
+                android:id="@+id/bands_2g_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/technology"
+                android:paddingLeft="6dp"
+                android:text="2G Bands : " />
+
+            <TextView
+                android:id="@+id/bands_2g"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/technology"
+                android:layout_toEndOf="@+id/bands_2g_title"
+                android:text="GSM" />
+
+            <TextView
+                android:id="@+id/bands_3g_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bands_2g"
+                android:paddingLeft="6dp"
+                android:text="3G Bands : " />
+
+            <TextView
+                android:id="@+id/bands_3g"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bands_2g"
+                android:layout_toEndOf="@+id/bands_3g_title"
+                android:text="HSPDA" />
+
+            <TextView
+                android:id="@+id/bands_4g_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bands_3g"
+                android:paddingLeft="6dp"
+                android:text="4G Bands : " />
+
+            <TextView
+                android:id="@+id/bands_4g"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bands_3g"
+                android:layout_toEndOf="@+id/bands_4g_title"
+                android:text="LTE" />
+
+            <TextView
+                android:id="@+id/speed_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bands_4g"
+                android:paddingLeft="6dp"
+                android:text="Speed : " />
+
+            <TextView
+                android:id="@+id/speed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bands_4g"
+                android:layout_toEndOf="@+id/speed_title"
+                android:text="50 MBPS" />
+
+            <TextView
+                android:id="@+id/gprs_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/speed"
+                android:paddingLeft="6dp"
+                android:text="GPRS : " />
+
+            <TextView
+                android:id="@+id/gprs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/speed"
+                android:layout_toEndOf="@+id/gprs_title"
+                android:text="Yes" />
+
+            <TextView
+                android:id="@+id/edge_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/gprs"
+                android:paddingLeft="6dp"
+                android:text="EDGE : " />
+
+            <TextView
+                android:id="@+id/edge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/gprs"
+                android:layout_toEndOf="@+id/edge_title"
+                android:text="Yes" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/launch_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/network_card"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="3dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/launch_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="3dp"
+                android:text="LAUNCH"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/announced_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/launch_header"
+                android:paddingLeft="6dp"
+                android:text="Announced : " />
+
+            <TextView
+                android:id="@+id/announced"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/launch_header"
+                android:layout_toEndOf="@+id/announced_title"
+                android:text="2016, September" />
+
+            <TextView
+                android:id="@+id/status_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/announced"
+                android:paddingLeft="6dp"
+                android:text="Status : " />
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/announced"
+                android:layout_toEndOf="@+id/status_title"
+                android:text="Released, 2016, September" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/body_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/launch_card"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="3dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/body_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="3dp"
+                android:text="BODY"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/dimensions_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/body_header"
+                android:paddingLeft="6dp"
+                android:text="Dimensions : " />
+
+            <TextView
+                android:id="@+id/dimensions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/body_header"
+                android:layout_toEndOf="@+id/dimensions_title"
+                android:text="151.5 x 74.9 x 8.1 mm (5.96 x 2.95 x 0.32 in)" />
+
+            <TextView
+                android:id="@+id/weight_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dimensions"
+                android:paddingLeft="6dp"
+                android:text="Weight : " />
+
+            <TextView
+                android:id="@+id/weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dimensions"
+                android:layout_toEndOf="@+id/weight_title"
+                android:text="172 g (6.07 oz)" />
+
+            <TextView
+                android:id="@+id/sim_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/weight"
+                android:paddingLeft="6dp"
+                android:text="SIM : " />
+
+            <TextView
+                android:id="@+id/sim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/weight"
+                android:layout_toEndOf="@+id/sim_title"
+                android:text="Nano-SIM" />
+
+            <TextView
+                android:id="@+id/body_features_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sim"
+                android:paddingLeft="6dp"
+                android:text="Other : " />
+
+            <TextView
+                android:id="@+id/body_features"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sim"
+                android:layout_toEndOf="@+id/body_features_title"
+                android:text="Corning Gorilla Glass 4 back panel" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/display_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/body_card"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="3dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/display_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="3dp"
+                android:text="DISPLAY"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/display_type_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/display_header"
+                android:paddingLeft="6dp"
+                android:text="Type : " />
+
+            <TextView
+                android:id="@+id/display_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/display_header"
+                android:layout_toEndOf="@+id/display_type_title"
+                android:text="Super AMOLED capacitive touchscreen, 16M colors" />
+
+            <TextView
+                android:id="@+id/display_size_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/display_type"
+                android:paddingLeft="6dp"
+                android:text="Size : " />
+
+            <TextView
+                android:id="@+id/display_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/display_type"
+                android:layout_toEndOf="@+id/display_size_title"
+                android:text="5.5 inches" />
+
+            <TextView
+                android:id="@+id/resolution_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/display_size"
+                android:paddingLeft="6dp"
+                android:text="Resolution : " />
+
+            <TextView
+                android:id="@+id/resolution"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/display_size"
+                android:layout_toEndOf="@+id/resolution_title"
+                android:text="1440 x 2560" />
+
+            <TextView
+                android:id="@+id/protection_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/resolution"
+                android:paddingLeft="6dp"
+                android:text="Protection : " />
+
+            <TextView
+                android:id="@+id/protection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/resolution"
+                android:layout_toEndOf="@+id/protection_title"
+                android:text="Corning Gorilla Glass 4" />
+
+            <TextView
+                android:id="@+id/display_features_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/protection"
+                android:paddingLeft="6dp"
+                android:text="Other : " />
+
+            <TextView
+                android:id="@+id/display_features"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/protection"
+                android:layout_toEndOf="@+id/display_features_title"
+                android:text="TouchWiz UI" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/platform_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/display_card"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="3dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/platform_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="3dp"
+                android:text="PLATFORM"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/os_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/platform_header"
+                android:paddingLeft="6dp"
+                android:text="OS : " />
+
+            <TextView
+                android:id="@+id/os"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/platform_header"
+                android:layout_toEndOf="@+id/os_title"
+                android:text="Android OS, v5.0.2 (Lollipop), upgradable to v6.0.1 (Marshmallow)" />
+
+            <TextView
+                android:id="@+id/chipset_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/os"
+                android:paddingLeft="6dp"
+                android:text="Chipset : " />
+
+            <TextView
+                android:id="@+id/chipset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/os"
+                android:layout_toEndOf="@+id/chipset_title"
+                android:text="Exynos 7420 Octa" />
+
+            <TextView
+                android:id="@+id/cpu_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/chipset"
+                android:paddingLeft="6dp"
+                android:text="CPU : " />
+
+            <TextView
+                android:id="@+id/cpu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/chipset"
+                android:layout_toEndOf="@+id/cpu_title"
+                android:text="Octa-core (4x2.1 GHz ortex-A57 &amp; 4x1.5 GHz Cortex-A53)" />
+
+            <TextView
+                android:id="@+id/gpu_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cpu"
+                android:paddingLeft="6dp"
+                android:text="GPU : " />
+
+            <TextView
+                android:id="@+id/gpu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cpu"
+                android:layout_toEndOf="@+id/gpu_title"
+                android:text="Mali-T760MP8" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/memory_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/platform_card"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="3dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/memory_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="3dp"
+                android:text="MEMORY"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/ram_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/memory_header"
+                android:paddingLeft="6dp"
+                android:text="RAM : " />
+
+            <TextView
+                android:id="@+id/ram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/memory_header"
+                android:layout_toEndOf="@+id/ram_title"
+                android:text="4 GB" />
+
+            <TextView
+                android:id="@+id/internal_memory_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ram"
+                android:paddingLeft="6dp"
+                android:text="Internal : " />
+
+            <TextView
+                android:id="@+id/internal_memory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ram"
+                android:layout_toEndOf="@+id/internal_memory_title"
+                android:text="32/64 GB" />
+
+            <TextView
+                android:id="@+id/external_memory_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/internal_memory"
+                android:paddingLeft="6dp"
+                android:text="Card slot : " />
+
+            <TextView
+                android:id="@+id/external_memory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/internal_memory"
+                android:layout_toEndOf="@+id/external_memory_title"
+                android:text="microSD, up to 256 GB" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/camera_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/memory_card"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="3dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/camera_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="3dp"
+                android:text="CAMERA"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/primary_camera_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/camera_header"
+                android:paddingLeft="6dp"
+                android:text="Primary : " />
+
+            <TextView
+                android:id="@+id/primary_camera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/camera_header"
+                android:layout_toEndOf="@+id/primary_camera_title"
+                android:text="12 MP, f/1.7, 26mm, phase detection autofocus, OIS, LED flash" />
+
+            <TextView
+                android:id="@+id/secondary_camera_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/primary_camera"
+                android:paddingLeft="6dp"
+                android:text="Secondary : " />
+
+            <TextView
+                android:id="@+id/secondary_camera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/primary_camera"
+                android:layout_toEndOf="@+id/secondary_camera_title"
+                android:text="5 MP, f/1.7, 22mm, dual video call, Auto HDR" />
+
+            <TextView
+                android:id="@+id/video_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/secondary_camera"
+                android:paddingLeft="6dp"
+                android:text="Video : " />
+
+            <TextView
+                android:id="@+id/video"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/secondary_camera"
+                android:layout_toEndOf="@+id/video_title"
+                android:text="Octa-core (4x2.1 GHz ortex-A57 &amp; 4x1.5 GHz Cortex-A53)" />
+
+            <TextView
+                android:id="@+id/camera_features_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/video"
+                android:paddingLeft="6dp"
+                android:text="Features : " />
+
+            <TextView
+                android:id="@+id/camera_features"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/video"
+                android:layout_toEndOf="@+id/camera_features_title"
+                android:paddingBottom="4dp"
+                android:text="1/2.5&quot; sensor size, 1.4 µm pixel size, geo-tagging, simultaneous 4K video and 9MP image recording, touch focus, face/smile detection, Auto HDR, panorama" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/sound_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/camera_card"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="3dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/sound_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="3dp"
+                android:text="SOUND"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/alert_type_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sound_header"
+                android:paddingLeft="6dp"
+                android:text="Alert types : " />
+
+            <TextView
+                android:id="@+id/alert_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sound_header"
+                android:layout_toEndOf="@+id/alert_type_title"
+                android:text="Vibration; MP3, WAV ringtones" />
+
+            <TextView
+                android:id="@+id/loudspeaker_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/alert_type"
+                android:paddingLeft="6dp"
+                android:text="Loudspeaker : " />
+
+            <TextView
+                android:id="@+id/loudspeaker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/alert_type"
+                android:layout_toEndOf="@+id/loudspeaker_title"
+                android:text="Yes" />
+
+            <TextView
+                android:id="@+id/audio_jack_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/loudspeaker"
+                android:paddingLeft="6dp"
+                android:text="3.5mm jack : " />
+
+            <TextView
+                android:id="@+id/audio_jack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/loudspeaker"
+                android:layout_toEndOf="@+id/audio_jack_title"
+                android:text="Yes" />
+
+            <TextView
+                android:id="@+id/sound_features_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/audio_jack"
+                android:paddingLeft="6dp"
+                android:text="Other : " />
+
+            <TextView
+                android:id="@+id/sound_features"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/audio_jack"
+                android:layout_toEndOf="@+id/sound_features_title"
+                android:paddingBottom="4dp"
+                android:text="- 24-bit/192kHz audio
+- Active noise cancellation with dedicated mic" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/communication_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sound_card"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="3dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/communication_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="3dp"
+                android:text="Communicaiton"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/wifi_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/communication_header"
+                android:paddingLeft="6dp"
+                android:text="Wi-Fi : " />
+
+            <TextView
+                android:id="@+id/wifi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/communication_header"
+                android:layout_toEndOf="@+id/wifi_title"
+                android:text="Wi-Fi 802.11 a/b/g/n/ac, dual-band, Wi-Fi Direct, hotspot" />
+
+            <TextView
+                android:id="@+id/blutooth_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/wifi"
+                android:paddingLeft="6dp"
+                android:text="Bluetooth : " />
+
+            <TextView
+                android:id="@+id/bluetooth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/wifi"
+                android:layout_toEndOf="@+id/blutooth_title"
+                android:text="v4.2, A2DP, LE, aptX" />
+
+            <TextView
+                android:id="@+id/gps_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bluetooth"
+                android:paddingLeft="6dp"
+                android:text="GPS : " />
+
+            <TextView
+                android:id="@+id/gps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bluetooth"
+                android:layout_toEndOf="@+id/gps_title"
+                android:text="Yes, with A-GPS, GLONASS, BDS" />
+
+            <TextView
+                android:id="@+id/nfc_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/gps"
+                android:paddingLeft="6dp"
+                android:text="NFC : " />
+
+            <TextView
+                android:id="@+id/nfc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/gps"
+                android:layout_toEndOf="@+id/nfc_title"
+                android:paddingBottom="4dp"
+                android:text="Yes" />
+            <TextView
+                android:id="@+id/radio_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nfc"
+                android:paddingLeft="6dp"
+                android:text="Radio : " />
+
+            <TextView
+                android:id="@+id/radio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nfc"
+                android:layout_toEndOf="@+id/radio_title"
+                android:paddingBottom="4dp"
+                android:text="No" />
+
+            <TextView
+                android:id="@+id/usb_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/radio"
+                android:paddingLeft="6dp"
+                android:text="USB : " />
+
+            <TextView
+                android:id="@+id/usb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/radio"
+                android:layout_toEndOf="@+id/usb_title"
+                android:paddingBottom="4dp"
+                android:text="microUSB v2.0, USB Host" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/features_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/communication_card"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="3dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/features_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="3dp"
+                android:text="FEATURES"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/sensor_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/features_header"
+                android:paddingLeft="6dp"
+                android:text="Sensors : " />
+
+            <TextView
+                android:id="@+id/sensors"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/features_header"
+                android:layout_toEndOf="@+id/sensor_title"
+                android:text="Fingerprint, accelerometer, gyro, proximity, compass, barometer, heart rate, SpO2" />
+
+            <TextView
+                android:id="@+id/messaging_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sensors"
+                android:paddingLeft="6dp"
+                android:text="Messaging : " />
+
+            <TextView
+                android:id="@+id/messaging"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sensors"
+                android:layout_toEndOf="@+id/messaging_title"
+                android:text="SMS(threaded view), MMS, Email, Push Mail, IM" />
+
+            <TextView
+                android:id="@+id/browser_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/messaging"
+                android:paddingLeft="6dp"
+                android:text="Browser : " />
+
+            <TextView
+                android:id="@+id/browser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/messaging"
+                android:layout_toEndOf="@+id/browser_title"
+                android:text="HTML5" />
+
+            <TextView
+                android:id="@+id/java_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/browser"
+                android:paddingLeft="6dp"
+                android:text="Java : " />
+
+            <TextView
+                android:id="@+id/java"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/browser"
+                android:layout_toEndOf="@+id/java_title"
+                android:paddingBottom="4dp"
+                android:text="No" />
+            <TextView
+                android:id="@+id/extra_features_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/java"
+                android:paddingLeft="6dp"
+                android:text="Others : " />
+
+            <TextView
+                android:id="@+id/extra_features"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/java"
+                android:layout_toEndOf="@+id/extra_features_title"
+                android:paddingBottom="4dp"
+                android:text="Fast battery charging: 60% in 30 min (Quick Charge 2.0)
+Qi/PMA wireless charging (market dependent)
+ANT+ support
+S-Voice natural language commands and dictation
+OneDrive (115 GB cloud storage)
+MP4/DivX/XviD/WMV/H.264 player
+MP3/WAV/WMA/eAAC+/FLAC player
+Photo/video editor
+Document editor" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/battery_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/features_card"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="3dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/battery_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="3dp"
+                android:text="BATTERY"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/battery_capacity_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/battery_header"
+                android:paddingLeft="6dp"
+                android:text="Capacity : " />
+
+            <TextView
+                android:id="@+id/battery_capacity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/battery_header"
+                android:layout_toEndOf="@+id/battery_capacity_title"
+                android:text="Non-removable Li-Ion 3000 mAh battery" />
+
+            <TextView
+                android:id="@+id/talktime_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/battery_capacity"
+                android:paddingLeft="6dp"
+                android:text="Talk time : " />
+
+            <TextView
+                android:id="@+id/talktime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/battery_capacity"
+                android:layout_toEndOf="@+id/talktime_title"
+                android:text="Up to 22 h (3G)" />
+
+            <TextView
+                android:id="@+id/musicplay_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/talktime"
+                android:paddingLeft="6dp"
+                android:text="Music play : " />
+
+            <TextView
+                android:id="@+id/musicplay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/talktime"
+                android:layout_toEndOf="@+id/musicplay_title"
+                android:text="Up to 62 h" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/miscellaneous_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/battery_card"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="3dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/miscellaneous_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="3dp"
+                android:text="MISCELLANEOUS"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/colors_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/miscellaneous_header"
+                android:paddingLeft="6dp"
+                android:text="Colors : " />
+
+            <TextView
+                android:id="@+id/colors"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/miscellaneous_header"
+                android:layout_toEndOf="@+id/colors_title"
+                android:text="Black, White, Gold, Silver, Pink Gold" />
+
+            <TextView
+                android:id="@+id/performance_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/colors"
+                android:paddingLeft="6dp"
+                android:text="Performance : " />
+
+            <TextView
+                android:id="@+id/performance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/colors"
+                android:layout_toEndOf="@+id/performance_title"
+                android:text="Basemark OS II: 2004 / Basemark OS II 2.0: 2128 / Basemark X: 32345" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
 
 </RelativeLayout>

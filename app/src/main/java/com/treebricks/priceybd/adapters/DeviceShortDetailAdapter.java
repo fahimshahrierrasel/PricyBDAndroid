@@ -40,7 +40,7 @@ public class DeviceShortDetailAdapter extends RecyclerView.Adapter<DeviceShortDe
         public SimpleViewHolder(View view) {
             super(view);
             cardImageView = (ImageView) view.findViewById(R.id.card_image_view);
-            cardText = (TextView) view.findViewById(R.id.card_text);
+            cardText = (TextView) view.findViewById(R.id.network_header);
         }
     }
 
