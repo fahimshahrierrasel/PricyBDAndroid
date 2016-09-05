@@ -19,8 +19,8 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.bumptech.glide.Glide;
 import com.flaviofaria.kenburnsview.KenBurnsView;
-import com.squareup.picasso.Picasso;
 import com.treebricks.priceybd.R;
 import com.treebricks.priceybd.fragments.PriceFragment;
 import com.treebricks.priceybd.fragments.SpecificationFragment;
@@ -84,7 +84,7 @@ public class DeviceActivity extends AppCompatActivity {
 
 
         kbv = (KenBurnsView) findViewById(R.id.kbv_image);
-        Picasso.with(DeviceActivity.this).load(image).into(kbv);
+        Glide.with(DeviceActivity.this).load(image).placeholder(R.drawable.smartphone).into(kbv);
         kbv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,7 +100,12 @@ public class DeviceActivity extends AppCompatActivity {
                 });
 
                 ImageView imageView = new ImageView(DeviceActivity.this);
-                Picasso.with(view.getContext()).load(image).into(imageView);
+
+
+                Glide.with(view.getContext()).load(image)
+                        .error(R.drawable.smartphone)
+                        .placeholder(R.drawable.smartphone)
+                        .into(imageView);
 
                 imageView.setOnClickListener(new View.OnClickListener() {
                     @Override

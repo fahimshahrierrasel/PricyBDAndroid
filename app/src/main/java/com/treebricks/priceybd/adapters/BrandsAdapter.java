@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 import com.treebricks.priceybd.R;
 import com.treebricks.priceybd.models.Brand;
 import java.util.ArrayList;
@@ -48,7 +48,9 @@ public class BrandsAdapter extends RecyclerView.Adapter<BrandsAdapter.SimpleView
     @Override
     public void onBindViewHolder(SimpleViewHolder holder, final int position) {
 
-        Picasso.with(context).load(allBrands.get(position).getBrandImage()).into(holder.cardImageView);
+        Glide.with(context)
+                .load(allBrands.get(position).getBrandImage())
+                .into(holder.cardImageView);
         holder.cardText.setText(allBrands.get(position).getBrandName());
         holder.cardImageView.setOnClickListener(new View.OnClickListener() {
             @Override
