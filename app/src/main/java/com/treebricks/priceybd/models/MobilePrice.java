@@ -10,9 +10,6 @@ public class MobilePrice {
     @SerializedName("PriceID")
     private String priceID;
 
-    @SerializedName("MobileID")
-    private String mobileID;
-
     @SerializedName("ShopID")
     private String shopId;
 
@@ -25,14 +22,6 @@ public class MobilePrice {
 
     public void setPriceID(String priceID) {
         this.priceID = priceID;
-    }
-
-    public String getMobileID() {
-        return mobileID;
-    }
-
-    public void setMobileID(String mobileID) {
-        this.mobileID = mobileID;
     }
 
     public String getShopId() {

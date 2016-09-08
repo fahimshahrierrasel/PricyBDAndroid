@@ -58,7 +58,7 @@ public class PriceAdapter extends RecyclerView.Adapter<PriceAdapter.PriceViewHol
     @Override
     public void onBindViewHolder(final PriceViewHolder holder, int position)
     {
-        holder.priceText.setText(mobilePrices.get(position).getPrice() + " BDT");
+        holder.priceText.setText(String.format("%s BDT", mobilePrices.get(position).getPrice()));
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         final Shop[] newShop = new Shop[1];
         Call<Shop> call = apiInterface.getshop(Integer.parseInt(mobilePrices.get(position).getShopId()));

@@ -10,9 +10,6 @@ public class MobileShortDetail {
     @SerializedName("MobileID")
     private String mobileID;
 
-    @SerializedName("Brand")
-    private String brand;
-
     @SerializedName("ModelName")
     private String modelName;
 
@@ -23,9 +20,8 @@ public class MobileShortDetail {
     public MobileShortDetail() {
     }
 
-    public MobileShortDetail(String mobileID, String brand, String modelName, String photo) {
+    public MobileShortDetail(String mobileID, String modelName, String photo) {
         this.mobileID = mobileID;
-        this.brand = brand;
         this.modelName = modelName;
         this.photo = photo;
     }
@@ -36,14 +32,6 @@ public class MobileShortDetail {
 
     public void setMobileID(String mobileID) {
         this.mobileID = mobileID;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
     }
 
     public String getModelName() {
@@ -66,7 +54,6 @@ public class MobileShortDetail {
     public String toString() {
         return "MobileShortDetail{" +
                 "mobileID='" + mobileID + '\'' +
-                ", brand='" + brand + '\'' +
                 ", modelName='" + modelName + '\'' +
                 ", photo='" + photo + '\'' +
                 '}';

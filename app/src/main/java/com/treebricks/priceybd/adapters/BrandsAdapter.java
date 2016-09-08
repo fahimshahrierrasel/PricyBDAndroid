@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.treebricks.priceybd.R;
 import com.treebricks.priceybd.models.Brand;
 import java.util.ArrayList;
@@ -50,6 +51,7 @@ public class BrandsAdapter extends RecyclerView.Adapter<BrandsAdapter.SimpleView
 
         Glide.with(context)
                 .load(allBrands.get(position).getBrandImage())
+                .diskCacheStrategy(DiskCacheStrategy.RESULT)
                 .into(holder.cardImageView);
         holder.cardText.setText(allBrands.get(position).getBrandName());
         holder.cardImageView.setOnClickListener(new View.OnClickListener() {

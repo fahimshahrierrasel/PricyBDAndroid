@@ -8,12 +8,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class MobileDetail {
 
-    @SerializedName("MobileID")
-    public String mobileID;
-    
-    @SerializedName("Brand")
-    public String brand;
-    
     @SerializedName("ModelName")
     public String modelName;
 
@@ -152,9 +146,6 @@ public class MobileDetail {
     @SerializedName("BatteryType")
     public String batteryType;
 
-    @SerializedName("BatteryCapacity")
-    public String batteryCapacity;
-
     @SerializedName("BatteryTalktime")
     public String batteryTalktime;
 
@@ -173,8 +164,8 @@ public class MobileDetail {
     public MobileDetail() {
     }
 
-    public MobileDetail(String mobileID, String brand, String modelName, String netTechnology,
-                        String _2GBands, String _3GBands, String _4GBands, String speed, String gPRS,
+    public MobileDetail( String modelName, String netTechnology,String _2GBands, String _3GBands,
+                         String _4GBands, String speed, String gPRS,
                         String eDGE, String announced, String status, String bodyDimensions,
                         String bodyWeight, String simType, String bodyFeatures, String displayType,
                         String displaySize, String displayResolution, String displayProtection,
@@ -183,11 +174,8 @@ public class MobileDetail {
                         String video, String secondaryCameraFeatures, String cameraFeatures, String soundAlertTypes,
                         String soundLoudspeaker, String soundJack, String soundFeatures, String wifi, String bluetooth,
                         String gps, String nfc, String radio, String usb, String sensors, String messaging,
-                        String browser, String mJava, String otherFeatures, String batteryType,
-                        String batteryCapacity, String batteryTalktime, String batteryMusicplay,
+                        String batteryTalktime, String batteryMusicplay,
                         String colors, String performance, String photo) {
-        this.mobileID = mobileID;
-        this.brand = brand;
         this.modelName = modelName;
         this.netTechnology = netTechnology;
         this._2GBands = _2GBands;
@@ -234,28 +222,11 @@ public class MobileDetail {
         this.mJava = mJava;
         this.otherFeatures = otherFeatures;
         this.batteryType = batteryType;
-        this.batteryCapacity = batteryCapacity;
         this.batteryTalktime = batteryTalktime;
         this.batteryMusicplay = batteryMusicplay;
         this.colors = colors;
         this.performance = performance;
         this.photo = photo;
-    }
-
-    public String getMobileID() {
-        return mobileID;
-    }
-
-    public void setMobileID(String mobileID) {
-        this.mobileID = mobileID;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
     }
 
     public String getModelName() {
@@ -624,14 +595,6 @@ public class MobileDetail {
 
     public void setBatteryType(String batteryType) {
         this.batteryType = batteryType;
-    }
-
-    public String getBatteryCapacity() {
-        return batteryCapacity;
-    }
-
-    public void setBatteryCapacity(String batteryCapacity) {
-        this.batteryCapacity = batteryCapacity;
     }
 
     public String getBatteryTalktime() {

@@ -24,7 +24,7 @@
         android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#d0ffffff"/>
+        android:background="#80000000"/>
 
     <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/menu"
@@ -54,12 +54,12 @@
         fab:menu_backgroundColor="@android:color/transparent">
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_network"
+            android:id="@+id/fab_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             fab:fab_size="mini"
-            fab:fab_label="Network Type"
-            android:src="@drawable/network"/>
+            fab:fab_label="Price"
+            android:src="@drawable/money"/>
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/fab_cpu"

@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.treebricks.priceybd.activities.DeviceActivity;
 import com.treebricks.priceybd.R;
 import com.treebricks.priceybd.models.MobileShortDetail;
@@ -57,6 +58,7 @@ public class DeviceShortDetailAdapter extends RecyclerView.Adapter<DeviceShortDe
                 .error(R.drawable.smartphone)
                 .placeholder(R.drawable.smartphone)
                 .crossFade()
+                .diskCacheStrategy(DiskCacheStrategy.RESULT)
                 .into(holder.cardImageView);
 
         holder.cardText.setText(allDevices.get(position).getModelName());

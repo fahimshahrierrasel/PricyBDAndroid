@@ -19,7 +19,9 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.flaviofaria.kenburnsview.KenBurnsView;
 import com.treebricks.priceybd.R;
 import com.treebricks.priceybd.fragments.PriceFragment;
@@ -84,7 +86,13 @@ public class DeviceActivity extends AppCompatActivity {
 
 
         kbv = (KenBurnsView) findViewById(R.id.kbv_image);
-        Glide.with(DeviceActivity.this).load(image).placeholder(R.drawable.smartphone).into(kbv);
+        Glide.with(DeviceActivity.this)
+                .load(image)
+                .placeholder(R.drawable.smartphone)
+                .crossFade()
+                .diskCacheStrategy(DiskCacheStrategy.RESULT)
+                .into(kbv);
+
         kbv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,7 +112,9 @@ public class DeviceActivity extends AppCompatActivity {
 
                 Glide.with(view.getContext()).load(image)
                         .error(R.drawable.smartphone)
+                        .crossFade()
                         .placeholder(R.drawable.smartphone)
+                        .diskCacheStrategy(DiskCacheStrategy.RESULT)
                         .into(imageView);
 
                 imageView.setOnClickListener(new View.OnClickListener() {
@@ -118,6 +128,7 @@ public class DeviceActivity extends AppCompatActivity {
                         ViewGroup.LayoutParams.WRAP_CONTENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT));
                 builder.show();
+
             }
         });
 
