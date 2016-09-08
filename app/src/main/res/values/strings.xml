@@ -6,5 +6,43 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_device">Device</string>
+    <string name="network_head">NETWORK</string>
+    <string name="technology_title">Technology</string>
+    <string name="technology">GSM / HSPA / LTE</string>
+    <string name="bands_2g_title">2G Bands</string>
+    <string name="bands_2g">GSM</string>
+    <string name="bands_3g_title">3G Bands</string>
+    <string name="bands_3g">HSPDA</string>
+    <string name="bands_4g_title">4G Bands</string>
+    <string name="bands_4g">LTE</string>
+    <string name="speed_title">Speed</string>
+    <string name="speed">50 MBPS</string>
+    <string name="gprs_title">GPRS</string>
+    <string name="yes">Yes</string>
+    <string name="edge_title">EDGE</string>
+    <string name="launch_header">LAUNCH</string>
+    <string name="announced_title">Announced</string>
+    <string name="announced">2016, September</string>
+    <string name="status_title">Status</string>
+    <string name="status">Released, 2016, September</string>
+    <string name="body_header">BODY</string>
+    <string name="dimensions_title">Dimensions</string>
+    <string name="dimensions">151.5 x 74.9 x 8.1 mm (5.96 x 2.95 x 0.32 in)</string>
+    <string name="weight_title">Weight</string>
+    <string name="weight">172 g (6.07 oz)</string>
+    <string name="sim_title">SIM</string>
+    <string name="sim">Nano-SIM</string>
+    <string name="other">Other</string>
+    <string name="body_features">Corning Gorilla Glass 4 back panel</string>
+    <string name="display_header">DISPLAY</string>
+    <string name="display_type_title">Type</string>
+    <string name="display_type">Super AMOLED capacitive touchscreen, 16M colors</string>
+    <string name="display_size_title">Size</string>
+    <string name="display_size">5.5 inches</string>
+    <string name="resolution_title">Resolution</string>
+    <string name="resolution">1440 x 2560</string>
+    <string name="protection_title">Protection</string>
+    <string name="protection">Corning Gorilla Glass 4</string>
+    <string name="display_feature">TouchWiz UI</string>
 
 </resources>

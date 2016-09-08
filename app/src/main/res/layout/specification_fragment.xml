@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -18,125 +19,142 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical">
 
-            <TextView
-                android:id="@+id/network_header"
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="3dp"
-                android:text="NETWORK"
+                android:src="@drawable/ic_network"
+                android:id="@+id/network_image"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/network_header"
+                android:layout_toEndOf="@+id/network_image"
+                android:paddingTop="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="3dp"
+                android:paddingEnd="0dp"
+                android:text="@string/network_head"
                 android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/technology_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/network_header"
-                android:paddingLeft="6dp"
-                android:text="Technology : " />
+                android:layout_below="@+id/network_image"
+                android:paddingStart="6dp"
+                android:paddingEnd="10dp"
+                android:text="@string/technology_title" />
 
             <TextView
                 android:id="@+id/technology"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/network_header"
+                android:layout_below="@+id/network_image"
                 android:layout_toEndOf="@+id/technology_title"
-                android:text="GSM / HSPA / LTE" />
+                android:text="@string/technology" />
 
             <TextView
                 android:id="@+id/bands_2g_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/technology"
-                android:paddingLeft="6dp"
-                android:text="2G Bands : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="@string/bands_2g_title" />
 
             <TextView
                 android:id="@+id/bands_2g"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/technology"
-                android:layout_toEndOf="@+id/bands_2g_title"
-                android:text="GSM" />
+                android:layout_toEndOf="@+id/technology_title"
+                android:text="@string/bands_2g" />
 
             <TextView
                 android:id="@+id/bands_3g_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/bands_2g"
-                android:paddingLeft="6dp"
-                android:text="3G Bands : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="@string/bands_3g_title" />
 
             <TextView
                 android:id="@+id/bands_3g"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/bands_2g"
-                android:layout_toEndOf="@+id/bands_3g_title"
-                android:text="HSPDA" />
+                android:layout_toEndOf="@+id/technology_title"
+                android:text="@string/bands_3g" />
 
             <TextView
                 android:id="@+id/bands_4g_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/bands_3g"
-                android:paddingLeft="6dp"
-                android:text="4G Bands : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="@string/bands_4g_title" />
 
             <TextView
                 android:id="@+id/bands_4g"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/bands_3g"
-                android:layout_toEndOf="@+id/bands_4g_title"
-                android:text="LTE" />
+                android:layout_toEndOf="@+id/technology_title"
+                android:text="@string/bands_4g" />
 
             <TextView
                 android:id="@+id/speed_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/bands_4g"
-                android:paddingLeft="6dp"
-                android:text="Speed : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="@string/speed_title" />
 
             <TextView
                 android:id="@+id/speed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/bands_4g"
-                android:layout_toEndOf="@+id/speed_title"
-                android:text="50 MBPS" />
+                android:layout_toEndOf="@+id/technology_title"
+                android:text="@string/speed" />
 
             <TextView
                 android:id="@+id/gprs_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/speed"
-                android:paddingLeft="6dp"
-                android:text="GPRS : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="@string/gprs_title" />
 
             <TextView
                 android:id="@+id/gprs"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/speed"
-                android:layout_toEndOf="@+id/gprs_title"
-                android:text="Yes" />
+                android:layout_toEndOf="@+id/technology_title"
+                android:text="@string/yes" />
 
             <TextView
                 android:id="@+id/edge_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/gprs"
-                android:paddingLeft="6dp"
-                android:text="EDGE : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="@string/edge_title" />
 
             <TextView
                 android:id="@+id/edge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/gprs"
-                android:layout_toEndOf="@+id/edge_title"
-                android:text="Yes" />
+                android:layout_toEndOf="@+id/technology_title"
+                android:text="@string/yes" />
 
         </RelativeLayout>
 
@@ -156,45 +174,57 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_launch"
+                android:id="@+id/launch_image"
+                tools:ignore="ContentDescription" />
+
             <TextView
                 android:id="@+id/launch_header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="3dp"
-                android:text="LAUNCH"
+                android:layout_toEndOf="@+id/launch_image"
+                android:paddingTop="12dp"
+                android:paddingStart="3dp"
+                android:paddingEnd="0dp"
+                android:text="@string/launch_header"
                 android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/announced_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/launch_header"
-                android:paddingLeft="6dp"
-                android:text="Announced : " />
+                android:layout_below="@+id/launch_image"
+                android:paddingStart="6dp"
+                android:paddingEnd="10dp"
+                android:text="@string/announced_title" />
 
             <TextView
                 android:id="@+id/announced"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/launch_header"
+                android:layout_below="@+id/launch_image"
                 android:layout_toEndOf="@+id/announced_title"
-                android:text="2016, September" />
+                android:text="@string/announced" />
 
             <TextView
                 android:id="@+id/status_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/announced"
-                android:paddingLeft="6dp"
-                android:text="Status : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="@string/status_title" />
 
             <TextView
                 android:id="@+id/status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/announced"
-                android:layout_toEndOf="@+id/status_title"
-                android:text="Released, 2016, September" />
+                android:layout_toEndOf="@+id/announced_title"
+                android:text="@string/status" />
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 
@@ -212,77 +242,91 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/body_image"
+                android:src="@drawable/ic_body"
+                tools:ignore="ContentDescription" />
+
             <TextView
                 android:id="@+id/body_header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="3dp"
-                android:text="BODY"
+                android:paddingStart="3dp"
+                android:paddingEnd="0dp"
+                android:layout_toEndOf="@+id/body_image"
+                android:paddingTop="12dp"
+                android:text="@string/body_header"
                 android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/dimensions_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/body_header"
-                android:paddingLeft="6dp"
-                android:text="Dimensions : " />
+                android:layout_below="@+id/body_image"
+                android:paddingStart="6dp"
+                android:paddingEnd="10dp"
+                android:text="@string/dimensions_title" />
 
             <TextView
                 android:id="@+id/dimensions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/body_header"
+                android:layout_below="@+id/body_image"
                 android:layout_toEndOf="@+id/dimensions_title"
-                android:text="151.5 x 74.9 x 8.1 mm (5.96 x 2.95 x 0.32 in)" />
+                android:text="@string/dimensions" />
 
             <TextView
                 android:id="@+id/weight_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/dimensions"
-                android:paddingLeft="6dp"
-                android:text="Weight : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="@string/weight_title" />
 
             <TextView
                 android:id="@+id/weight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/dimensions"
-                android:layout_toEndOf="@+id/weight_title"
-                android:text="172 g (6.07 oz)" />
+                android:layout_toEndOf="@+id/dimensions_title"
+                android:text="@string/weight" />
 
             <TextView
                 android:id="@+id/sim_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/weight"
-                android:paddingLeft="6dp"
-                android:text="SIM : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="@string/sim_title" />
 
             <TextView
                 android:id="@+id/sim"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/weight"
-                android:layout_toEndOf="@+id/sim_title"
-                android:text="Nano-SIM" />
+                android:layout_toEndOf="@+id/dimensions_title"
+                android:text="@string/sim" />
 
             <TextView
                 android:id="@+id/body_features_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/sim"
-                android:paddingLeft="6dp"
-                android:text="Other : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="@string/other" />
 
             <TextView
                 android:id="@+id/body_features"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/sim"
-                android:layout_toEndOf="@+id/body_features_title"
-                android:text="Corning Gorilla Glass 4 back panel" />
+                android:layout_toEndOf="@+id/dimensions_title"
+                android:text="@string/body_features" />
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 
@@ -300,53 +344,66 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/display_image"
+                android:src="@drawable/ic_display"
+                tools:ignore="ContentDescription" />
+
             <TextView
                 android:id="@+id/display_header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="3dp"
-                android:text="DISPLAY"
+                android:paddingStart="3dp"
+                android:paddingEnd="0dp"
+                android:layout_toEndOf="@+id/display_image"
+                android:paddingTop="12dp"
+                android:text="@string/display_header"
                 android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/display_type_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/display_header"
-                android:paddingLeft="6dp"
-                android:text="Type : " />
+                android:layout_below="@+id/display_image"
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="@string/display_type_title" />
 
             <TextView
                 android:id="@+id/display_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/display_header"
-                android:layout_toEndOf="@+id/display_type_title"
-                android:text="Super AMOLED capacitive touchscreen, 16M colors" />
+                android:layout_below="@+id/display_image"
+                android:layout_toEndOf="@+id/resolution_title"
+                android:text="@string/display_type" />
 
             <TextView
                 android:id="@+id/display_size_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/display_type"
-                android:paddingLeft="6dp"
-                android:text="Size : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="@string/display_size_title" />
 
             <TextView
                 android:id="@+id/display_size"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/display_type"
-                android:layout_toEndOf="@+id/display_size_title"
-                android:text="5.5 inches" />
+                android:layout_toEndOf="@+id/resolution_title"
+                android:text="@string/display_size" />
 
             <TextView
                 android:id="@+id/resolution_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/display_size"
-                android:paddingLeft="6dp"
-                android:text="Resolution : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="10dp"
+                android:text="@string/resolution_title" />
 
             <TextView
                 android:id="@+id/resolution"
@@ -354,39 +411,41 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/display_size"
                 android:layout_toEndOf="@+id/resolution_title"
-                android:text="1440 x 2560" />
+                android:text="@string/resolution" />
 
             <TextView
                 android:id="@+id/protection_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/resolution"
-                android:paddingLeft="6dp"
-                android:text="Protection : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="@string/protection_title" />
 
             <TextView
                 android:id="@+id/protection"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/resolution"
-                android:layout_toEndOf="@+id/protection_title"
-                android:text="Corning Gorilla Glass 4" />
+                android:layout_toEndOf="@+id/resolution_title"
+                android:text="@string/protection" />
 
             <TextView
                 android:id="@+id/display_features_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/protection"
-                android:paddingLeft="6dp"
-                android:text="Other : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="@string/other" />
 
             <TextView
                 android:id="@+id/display_features"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/protection"
-                android:layout_toEndOf="@+id/display_features_title"
-                android:text="TouchWiz UI" />
+                android:layout_toEndOf="@+id/resolution_title"
+                android:text="@string/display_feature" />
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 
@@ -404,11 +463,21 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/platform_image"
+                android:src="@drawable/ic_platform"
+                tools:ignore="ContentDescription" />
+
             <TextView
                 android:id="@+id/platform_header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="3dp"
+                android:paddingStart="3dp"
+                android:paddingEnd="0dp"
+                android:paddingTop="12dp"
+                android:layout_toEndOf="@+id/platform_image"
                 android:text="PLATFORM"
                 android:textSize="20sp" />
 
@@ -416,16 +485,16 @@
                 android:id="@+id/os_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/platform_header"
-                android:paddingLeft="6dp"
-                android:text="OS : " />
+                android:layout_below="@+id/platform_image"
+                android:paddingStart="6dp"
+                android:text="OS" />
 
             <TextView
                 android:id="@+id/os"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/platform_header"
-                android:layout_toEndOf="@+id/os_title"
+                android:layout_below="@+id/platform_image"
+                android:layout_toEndOf="@+id/chipset_title"
                 android:text="Android OS, v5.0.2 (Lollipop), upgradable to v6.0.1 (Marshmallow)" />
 
             <TextView
@@ -433,8 +502,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/os"
-                android:paddingLeft="6dp"
-                android:text="Chipset : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="30dp"
+                android:text="Chipset" />
 
             <TextView
                 android:id="@+id/chipset"
@@ -449,15 +519,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/chipset"
-                android:paddingLeft="6dp"
-                android:text="CPU : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="CPU" />
 
             <TextView
                 android:id="@+id/cpu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/chipset"
-                android:layout_toEndOf="@+id/cpu_title"
+                android:layout_toEndOf="@+id/chipset_title"
                 android:text="Octa-core (4x2.1 GHz ortex-A57 &amp; 4x1.5 GHz Cortex-A53)" />
 
             <TextView
@@ -465,15 +536,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/cpu"
-                android:paddingLeft="6dp"
-                android:text="GPU : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="GPU" />
 
             <TextView
                 android:id="@+id/gpu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/cpu"
-                android:layout_toEndOf="@+id/gpu_title"
+                android:layout_toEndOf="@+id/chipset_title"
                 android:text="Mali-T760MP8" />
 
         </RelativeLayout>
@@ -493,11 +565,21 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/memory_image"
+                android:src="@drawable/ic_memory"
+                tools:ignore="ContentDescription" />
+
             <TextView
                 android:id="@+id/memory_header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="3dp"
+                android:paddingStart="3dp"
+                android:paddingEnd="0dp"
+                android:paddingTop="12dp"
+                android:layout_toEndOf="@+id/memory_image"
                 android:text="MEMORY"
                 android:textSize="20sp" />
 
@@ -505,16 +587,17 @@
                 android:id="@+id/ram_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/memory_header"
-                android:paddingLeft="6dp"
-                android:text="RAM : " />
+                android:layout_below="@+id/memory_image"
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="RAM" />
 
             <TextView
                 android:id="@+id/ram"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/memory_header"
-                android:layout_toEndOf="@+id/ram_title"
+                android:layout_below="@+id/memory_image"
+                android:layout_toEndOf="@+id/external_memory_title"
                 android:text="4 GB" />
 
             <TextView
@@ -522,15 +605,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ram"
-                android:paddingLeft="6dp"
-                android:text="Internal : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="Internal" />
 
             <TextView
                 android:id="@+id/internal_memory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ram"
-                android:layout_toEndOf="@+id/internal_memory_title"
+                android:layout_toEndOf="@+id/external_memory_title"
                 android:text="32/64 GB" />
 
             <TextView
@@ -538,8 +622,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/internal_memory"
-                android:paddingLeft="6dp"
-                android:text="Card slot : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="20dp"
+                android:text="Card slot" />
 
             <TextView
                 android:id="@+id/external_memory"
@@ -565,11 +650,21 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/camera_image"
+                android:src="@drawable/ic_camera"
+                tools:ignore="ContentDescription" />
+
             <TextView
                 android:id="@+id/camera_header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="3dp"
+                android:paddingStart="3dp"
+                android:paddingEnd="0dp"
+                android:paddingTop="12dp"
+                android:layout_toEndOf="@+id/camera_image"
                 android:text="CAMERA"
                 android:textSize="20sp" />
 
@@ -577,16 +672,17 @@
                 android:id="@+id/primary_camera_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/camera_header"
-                android:paddingLeft="6dp"
-                android:text="Primary : " />
+                android:layout_below="@+id/camera_image"
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="Primary" />
 
             <TextView
                 android:id="@+id/primary_camera"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/camera_header"
-                android:layout_toEndOf="@+id/primary_camera_title"
+                android:layout_below="@+id/camera_image"
+                android:layout_toEndOf="@+id/secondary_camera_title"
                 android:text="12 MP, f/1.7, 26mm, phase detection autofocus, OIS, LED flash" />
 
             <TextView
@@ -594,8 +690,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/primary_camera"
-                android:paddingLeft="6dp"
-                android:text="Secondary : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="10dp"
+                android:text="Secondary" />
 
             <TextView
                 android:id="@+id/secondary_camera"
@@ -610,15 +707,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/secondary_camera"
-                android:paddingLeft="6dp"
-                android:text="Video : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="Video" />
 
             <TextView
                 android:id="@+id/video"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/secondary_camera"
-                android:layout_toEndOf="@+id/video_title"
+                android:layout_toEndOf="@+id/secondary_camera_title"
                 android:text="Octa-core (4x2.1 GHz ortex-A57 &amp; 4x1.5 GHz Cortex-A53)" />
 
             <TextView
@@ -626,15 +724,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/video"
-                android:paddingLeft="6dp"
-                android:text="Features : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="Features" />
 
             <TextView
                 android:id="@+id/camera_features"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/video"
-                android:layout_toEndOf="@+id/camera_features_title"
+                android:layout_toEndOf="@+id/secondary_camera_title"
                 android:paddingBottom="4dp"
                 android:text="1/2.5&quot; sensor size, 1.4 µm pixel size, geo-tagging, simultaneous 4K video and 9MP image recording, touch focus, face/smile detection, Auto HDR, panorama" />
 
@@ -655,11 +754,21 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sound_image"
+                android:src="@drawable/ic_audio"
+                tools:ignore="ContentDescription" />
+
             <TextView
                 android:id="@+id/sound_header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="3dp"
+                android:paddingStart="3dp"
+                android:paddingEnd="0dp"
+                android:paddingTop="12dp"
+                android:layout_toEndOf="@+id/sound_image"
                 android:text="SOUND"
                 android:textSize="20sp" />
 
@@ -667,16 +776,17 @@
                 android:id="@+id/alert_type_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/sound_header"
-                android:paddingLeft="6dp"
-                android:text="Alert types : " />
+                android:layout_below="@+id/sound_image"
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="Alert types" />
 
             <TextView
                 android:id="@+id/alert_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/sound_header"
-                android:layout_toEndOf="@+id/alert_type_title"
+                android:layout_below="@+id/sound_image"
+                android:layout_toEndOf="@+id/loudspeaker_title"
                 android:text="Vibration; MP3, WAV ringtones" />
 
             <TextView
@@ -684,8 +794,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/alert_type"
-                android:paddingLeft="6dp"
-                android:text="Loudspeaker : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="10dp"
+                android:text="Loudspeaker" />
 
             <TextView
                 android:id="@+id/loudspeaker"
@@ -700,15 +811,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/loudspeaker"
-                android:paddingLeft="6dp"
-                android:text="3.5mm jack : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="3.5mm jack" />
 
             <TextView
                 android:id="@+id/audio_jack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/loudspeaker"
-                android:layout_toEndOf="@+id/audio_jack_title"
+                android:layout_toEndOf="@+id/loudspeaker_title"
                 android:text="Yes" />
 
             <TextView
@@ -716,15 +828,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/audio_jack"
-                android:paddingLeft="6dp"
-                android:text="Other : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="Other" />
 
             <TextView
                 android:id="@+id/sound_features"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/audio_jack"
-                android:layout_toEndOf="@+id/sound_features_title"
+                android:layout_toEndOf="@+id/loudspeaker_title"
                 android:paddingBottom="4dp"
                 android:text="- 24-bit/192kHz audio
 - Active noise cancellation with dedicated mic" />
@@ -746,11 +859,21 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/communication_image"
+                android:src="@drawable/ic_communication"
+                tools:ignore="ContentDescription" />
+
             <TextView
                 android:id="@+id/communication_header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="3dp"
+                android:paddingStart="3dp"
+                android:paddingEnd="0dp"
+                android:paddingTop="12dp"
+                android:layout_toEndOf="@+id/communication_image"
                 android:text="Communicaiton"
                 android:textSize="20sp" />
 
@@ -758,16 +881,17 @@
                 android:id="@+id/wifi_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/communication_header"
-                android:paddingLeft="6dp"
-                android:text="Wi-Fi : " />
+                android:layout_below="@+id/communication_image"
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="Wi-Fi" />
 
             <TextView
                 android:id="@+id/wifi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/communication_header"
-                android:layout_toEndOf="@+id/wifi_title"
+                android:layout_below="@+id/communication_image"
+                android:layout_toEndOf="@+id/blutooth_title"
                 android:text="Wi-Fi 802.11 a/b/g/n/ac, dual-band, Wi-Fi Direct, hotspot" />
 
             <TextView
@@ -775,8 +899,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/wifi"
-                android:paddingLeft="6dp"
-                android:text="Bluetooth : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="15dp"
+                android:text="Bluetooth" />
 
             <TextView
                 android:id="@+id/bluetooth"
@@ -791,15 +916,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/bluetooth"
-                android:paddingLeft="6dp"
-                android:text="GPS : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="GPS" />
 
             <TextView
                 android:id="@+id/gps"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/bluetooth"
-                android:layout_toEndOf="@+id/gps_title"
+                android:layout_toEndOf="@+id/blutooth_title"
                 android:text="Yes, with A-GPS, GLONASS, BDS" />
 
             <TextView
@@ -807,15 +933,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/gps"
-                android:paddingLeft="6dp"
-                android:text="NFC : " />
+                android:paddingStart="6dp"
+                android:text="NFC" />
 
             <TextView
                 android:id="@+id/nfc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/gps"
-                android:layout_toEndOf="@+id/nfc_title"
+                android:layout_toEndOf="@+id/blutooth_title"
                 android:paddingBottom="4dp"
                 android:text="Yes" />
             <TextView
@@ -823,15 +949,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/nfc"
-                android:paddingLeft="6dp"
-                android:text="Radio : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="Radio" />
 
             <TextView
                 android:id="@+id/radio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/nfc"
-                android:layout_toEndOf="@+id/radio_title"
+                android:layout_toEndOf="@+id/blutooth_title"
                 android:paddingBottom="4dp"
                 android:text="No" />
 
@@ -840,15 +967,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/radio"
-                android:paddingLeft="6dp"
-                android:text="USB : " />
+                android:paddingStart="6dp"
+                android:text="USB" />
 
             <TextView
                 android:id="@+id/usb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/radio"
-                android:layout_toEndOf="@+id/usb_title"
+                android:layout_toEndOf="@+id/blutooth_title"
                 android:paddingBottom="4dp"
                 android:text="microUSB v2.0, USB Host" />
 
@@ -872,11 +999,21 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/features_image"
+                android:src="@drawable/ic_features"
+                tools:ignore="ContentDescription" />
+
             <TextView
                 android:id="@+id/features_header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="3dp"
+                android:paddingStart="3dp"
+                android:paddingEnd="0dp"
+                android:paddingTop="12dp"
+                android:layout_toEndOf="@+id/features_image"
                 android:text="FEATURES"
                 android:textSize="20sp" />
 
@@ -884,16 +1021,16 @@
                 android:id="@+id/sensor_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/features_header"
-                android:paddingLeft="6dp"
-                android:text="Sensors : " />
+                android:layout_below="@+id/features_image"
+                android:paddingStart="6dp"
+                android:text="Sensors" />
 
             <TextView
                 android:id="@+id/sensors"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/features_header"
-                android:layout_toEndOf="@+id/sensor_title"
+                android:layout_below="@+id/features_image"
+                android:layout_toEndOf="@+id/messaging_title"
                 android:text="Fingerprint, accelerometer, gyro, proximity, compass, barometer, heart rate, SpO2" />
 
             <TextView
@@ -901,8 +1038,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/sensors"
-                android:paddingLeft="6dp"
-                android:text="Messaging : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="10dp"
+                android:text="Messaging" />
 
             <TextView
                 android:id="@+id/messaging"
@@ -917,15 +1055,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/messaging"
-                android:paddingLeft="6dp"
-                android:text="Browser : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="Browser" />
 
             <TextView
                 android:id="@+id/browser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/messaging"
-                android:layout_toEndOf="@+id/browser_title"
+                android:layout_toEndOf="@+id/messaging_title"
                 android:text="HTML5" />
 
             <TextView
@@ -933,15 +1072,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/browser"
-                android:paddingLeft="6dp"
-                android:text="Java : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="Java" />
 
             <TextView
                 android:id="@+id/java"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/browser"
-                android:layout_toEndOf="@+id/java_title"
+                android:layout_toEndOf="@+id/messaging_title"
                 android:paddingBottom="4dp"
                 android:text="No" />
             <TextView
@@ -949,15 +1089,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/java"
-                android:paddingLeft="6dp"
-                android:text="Others : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="Others" />
 
             <TextView
                 android:id="@+id/extra_features"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/java"
-                android:layout_toEndOf="@+id/extra_features_title"
+                android:layout_toEndOf="@+id/messaging_title"
                 android:paddingBottom="4dp"
                 android:text="Fast battery charging: 60% in 30 min (Quick Charge 2.0)
 Qi/PMA wireless charging (market dependent)
@@ -986,11 +1127,21 @@ Document editor" />
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/battery_image"
+                android:src="@drawable/ic_battery"
+                tools:ignore="ContentDescription" />
+
             <TextView
                 android:id="@+id/battery_header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="3dp"
+                android:paddingStart="3dp"
+                android:paddingEnd="0dp"
+                android:paddingTop="12dp"
+                android:layout_toEndOf="@+id/battery_image"
                 android:text="BATTERY"
                 android:textSize="20sp" />
 
@@ -998,16 +1149,17 @@ Document editor" />
                 android:id="@+id/battery_capacity_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/battery_header"
-                android:paddingLeft="6dp"
-                android:text="Capacity : " />
+                android:layout_below="@+id/battery_image"
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="Capacity" />
 
             <TextView
                 android:id="@+id/battery_capacity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/battery_header"
-                android:layout_toEndOf="@+id/battery_capacity_title"
+                android:layout_below="@+id/battery_image"
+                android:layout_toEndOf="@+id/musicplay_title"
                 android:text="Non-removable Li-Ion 3000 mAh battery" />
 
             <TextView
@@ -1015,15 +1167,16 @@ Document editor" />
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/battery_capacity"
-                android:paddingLeft="6dp"
-                android:text="Talk time : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="Talk time" />
 
             <TextView
                 android:id="@+id/talktime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/battery_capacity"
-                android:layout_toEndOf="@+id/talktime_title"
+                android:layout_toEndOf="@+id/musicplay_title"
                 android:text="Up to 22 h (3G)" />
 
             <TextView
@@ -1031,8 +1184,9 @@ Document editor" />
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/talktime"
-                android:paddingLeft="6dp"
-                android:text="Music play : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="10dp"
+                android:text="Music play" />
 
             <TextView
                 android:id="@+id/musicplay"
@@ -1059,11 +1213,20 @@ Document editor" />
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/miscellaneous_image"
+                android:src="@drawable/ic_miscellaneous"/>
+
             <TextView
                 android:id="@+id/miscellaneous_header"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="3dp"
+                android:paddingStart="3dp"
+                android:paddingEnd="0dp"
+                android:paddingTop="12dp"
+                android:layout_toEndOf="@+id/miscellaneous_image"
                 android:text="MISCELLANEOUS"
                 android:textSize="20sp" />
 
@@ -1071,16 +1234,17 @@ Document editor" />
                 android:id="@+id/colors_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/miscellaneous_header"
-                android:paddingLeft="6dp"
-                android:text="Colors : " />
+                android:layout_below="@+id/miscellaneous_image"
+                android:paddingStart="6dp"
+                android:paddingEnd="0dp"
+                android:text="Colors" />
 
             <TextView
                 android:id="@+id/colors"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/miscellaneous_header"
-                android:layout_toEndOf="@+id/colors_title"
+                android:layout_below="@+id/miscellaneous_image"
+                android:layout_toEndOf="@+id/performance_title"
                 android:text="Black, White, Gold, Silver, Pink Gold" />
 
             <TextView
@@ -1088,8 +1252,9 @@ Document editor" />
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/colors"
-                android:paddingLeft="6dp"
-                android:text="Performance : " />
+                android:paddingStart="6dp"
+                android:paddingEnd="10dp"
+                android:text="Performance" />
 
             <TextView
                 android:id="@+id/performance"
