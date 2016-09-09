@@ -31,6 +31,7 @@ import retrofit2.Response;
 public class AllDevice extends AppCompatActivity {
 
     public static final String TITLE = "TITLE";
+    public static final String CATAGORY = "CATAGORY";
     private RecyclerView allDevicesGridRecycler;
     private View mShadowView;
     private FloatingActionMenu fabMenu;
@@ -41,7 +42,7 @@ public class AllDevice extends AppCompatActivity {
     private FloatingActionButton fabRam;
     private FloatingActionButton fabRom;
     private FloatingActionButton fabBattery;
-    private String title;
+    private String title,catagory;
 
 
     @Override
@@ -61,6 +62,7 @@ public class AllDevice extends AppCompatActivity {
         mShadowView = findViewById(R.id.shadowView);
 
         title = getIntent().getStringExtra(TITLE);
+        catagory = getIntent().getStringExtra(CATAGORY);
 
         if(getSupportActionBar() != null)
         {
@@ -75,9 +77,17 @@ public class AllDevice extends AppCompatActivity {
         }
 
 
-        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        final ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
-        Call<AllShortDetails> call = apiInterface.getAllMobileShortDetail();
+        Call<AllShortDetails> call = apiInterface.getAllMobileShortDetail();;
+        if ("Normal".equals(catagory))
+        {
+            call = apiInterface.getAllMobileShortDetail();
+        }
+        else if("Brand".equals(catagory))
+        {
+            call = apiInterface.getDeviceByBrand(title);
+        }
 
         call.enqueue(new Callback<AllShortDetails>() {
             @Override
@@ -99,14 +109,14 @@ public class AllDevice extends AppCompatActivity {
         mShadowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // No action taken for making alpha screen unresponsive
+                fabMenu.close(true);
             }
         });
 
         mShadowView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                // No action taken for making alpha screen unresponsive
+                fabMenu.close(true);
                 return false;
             }
         });
@@ -125,7 +135,13 @@ public class AllDevice extends AppCompatActivity {
             }
         });
 
-        fabMenu.setClosedOnTouchOutside(true);
+        final MaterialDialog progressDialog = new MaterialDialog.Builder(this)
+                .title("Getting the data from Database")
+                .content("Please wait...")
+                .progress(true, 0)
+                .progressIndeterminateStyle(true)
+                .build();
+
 
         fabBattery.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,7 +156,26 @@ public class AllDevice extends AppCompatActivity {
                             @Override
                             public void onInput(MaterialDialog dialog, CharSequence input) {
 
-                                Toast.makeText(view.getContext(), "Battery Capacity: " + input +" MAh", Toast.LENGTH_SHORT).show();
+                                progressDialog.show();
+
+                                Call<AllShortDetails> call = apiInterface.sortDeviceByBattery(Integer.parseInt(input.toString()));
+
+                                call.enqueue(new Callback<AllShortDetails>() {
+                                    @Override
+                                    public void onResponse(Call<AllShortDetails> call, Response<AllShortDetails> response)
+                                    {
+                                        ArrayList<MobileShortDetail> allDevices = (ArrayList<MobileShortDetail>) response.body().getDevices();
+
+                                        DeviceShortDetailAdapter allDevicesAdapter = new DeviceShortDetailAdapter(AllDevice.this, allDevices, allDevices.size());
+                                        allDevicesGridRecycler.setAdapter(new SlideInBottomAnimationAdapter(allDevicesAdapter));
+                                        progressDialog.dismiss();
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<AllShortDetails> call, Throwable t) {
+                                        progressDialog.dismiss();
+                                    }
+                                });
 
                             }
                         }).show();
@@ -152,6 +187,7 @@ public class AllDevice extends AppCompatActivity {
         fabRom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
+                fabMenu.close(false);
                 new MaterialDialog.Builder(view.getContext())
                         .title("Rom")
                         .content("How much Rom do you want on your device?")
@@ -161,7 +197,26 @@ public class AllDevice extends AppCompatActivity {
                             @Override
                             public void onInput(MaterialDialog dialog, CharSequence input) {
 
-                                Toast.makeText(view.getContext(), "Rom: " + input + " GB", Toast.LENGTH_SHORT).show();
+                                progressDialog.show();
+
+                                Call<AllShortDetails> call = apiInterface.sortDeviceByRom(Integer.parseInt(input.toString()));
+
+                                call.enqueue(new Callback<AllShortDetails>() {
+                                    @Override
+                                    public void onResponse(Call<AllShortDetails> call, Response<AllShortDetails> response)
+                                    {
+                                        ArrayList<MobileShortDetail> allDevices = (ArrayList<MobileShortDetail>) response.body().getDevices();
+
+                                        DeviceShortDetailAdapter allDevicesAdapter = new DeviceShortDetailAdapter(AllDevice.this, allDevices, allDevices.size());
+                                        allDevicesGridRecycler.setAdapter(new SlideInBottomAnimationAdapter(allDevicesAdapter));
+                                        progressDialog.dismiss();
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<AllShortDetails> call, Throwable t) {
+                                        progressDialog.dismiss();
+                                    }
+                                });
 
                             }
                         }).show();
@@ -171,16 +226,36 @@ public class AllDevice extends AppCompatActivity {
         fabRam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
+                fabMenu.close(false);
                 new MaterialDialog.Builder(view.getContext())
                         .title("Ram")
                         .content("How much Ram do you want on your device?")
                         .inputType(InputType.TYPE_CLASS_NUMBER)
                         .inputRange(1,2, ResourcesCompat.getColor(getResources(), R.color.md_red_500, null))
-                        .input("Ram", "16", new MaterialDialog.InputCallback() {
+                        .input("Ram", "2", new MaterialDialog.InputCallback() {
                             @Override
                             public void onInput(MaterialDialog dialog, CharSequence input) {
 
-                                Toast.makeText(view.getContext(), "Ram: " + input + " GB", Toast.LENGTH_SHORT).show();
+                                progressDialog.show();
+
+                                Call<AllShortDetails> call = apiInterface.sortDeviceByRam(Integer.parseInt(input.toString()));
+
+                                call.enqueue(new Callback<AllShortDetails>() {
+                                    @Override
+                                    public void onResponse(Call<AllShortDetails> call, Response<AllShortDetails> response)
+                                    {
+                                        ArrayList<MobileShortDetail> allDevices = (ArrayList<MobileShortDetail>) response.body().getDevices();
+
+                                        DeviceShortDetailAdapter allDevicesAdapter = new DeviceShortDetailAdapter(AllDevice.this, allDevices, allDevices.size());
+                                        allDevicesGridRecycler.setAdapter(new SlideInBottomAnimationAdapter(allDevicesAdapter));
+                                        progressDialog.dismiss();
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<AllShortDetails> call, Throwable t) {
+                                        progressDialog.dismiss();
+                                    }
+                                });
 
                             }
                         }).show();
@@ -190,6 +265,7 @@ public class AllDevice extends AppCompatActivity {
         fabSelfie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
+                fabMenu.close(false);
                 new MaterialDialog.Builder(view.getContext())
                         .title("Secondary/Selfie Camera")
                         .content("What should be your selife camera on your device?")
@@ -199,7 +275,26 @@ public class AllDevice extends AppCompatActivity {
                             @Override
                             public void onInput(MaterialDialog dialog, CharSequence input) {
 
-                                Toast.makeText(view.getContext(), "Selfie Camera: " + input + " MP", Toast.LENGTH_SHORT).show();
+                                progressDialog.show();
+
+                                Call<AllShortDetails> call = apiInterface.sortDeviceBySelfieCamera(Integer.parseInt(input.toString()));
+
+                                call.enqueue(new Callback<AllShortDetails>() {
+                                    @Override
+                                    public void onResponse(Call<AllShortDetails> call, Response<AllShortDetails> response)
+                                    {
+                                        ArrayList<MobileShortDetail> allDevices = (ArrayList<MobileShortDetail>) response.body().getDevices();
+
+                                        DeviceShortDetailAdapter allDevicesAdapter = new DeviceShortDetailAdapter(AllDevice.this, allDevices, allDevices.size());
+                                        allDevicesGridRecycler.setAdapter(new SlideInBottomAnimationAdapter(allDevicesAdapter));
+                                        progressDialog.dismiss();
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<AllShortDetails> call, Throwable t) {
+                                        progressDialog.dismiss();
+                                    }
+                                });
 
                             }
                         }).show();
@@ -209,6 +304,7 @@ public class AllDevice extends AppCompatActivity {
         fabCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
+                fabMenu.close(false);
                 new MaterialDialog.Builder(view.getContext())
                         .title("Primary/Back Camera")
                         .content("What should be your primary camera on your device?")
@@ -218,7 +314,26 @@ public class AllDevice extends AppCompatActivity {
                             @Override
                             public void onInput(MaterialDialog dialog, CharSequence input) {
 
-                                Toast.makeText(view.getContext(), "Primary Camera: " + input + " MP", Toast.LENGTH_SHORT).show();
+                                progressDialog.show();
+
+                                Call<AllShortDetails> call = apiInterface.sortDeviceByPrimaryCamera(Integer.parseInt(input.toString()));
+
+                                call.enqueue(new Callback<AllShortDetails>() {
+                                    @Override
+                                    public void onResponse(Call<AllShortDetails> call, Response<AllShortDetails> response)
+                                    {
+                                        ArrayList<MobileShortDetail> allDevices = (ArrayList<MobileShortDetail>) response.body().getDevices();
+
+                                        DeviceShortDetailAdapter allDevicesAdapter = new DeviceShortDetailAdapter(AllDevice.this, allDevices, allDevices.size());
+                                        allDevicesGridRecycler.setAdapter(new SlideInBottomAnimationAdapter(allDevicesAdapter));
+                                        progressDialog.dismiss();
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<AllShortDetails> call, Throwable t) {
+                                        progressDialog.dismiss();
+                                    }
+                                });
 
                             }
                         }).show();
@@ -229,6 +344,7 @@ public class AllDevice extends AppCompatActivity {
         fabCpu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
+                fabMenu.close(false);
                 new MaterialDialog.Builder(view.getContext())
                         .title("CPU")
                         .content("What should be processing speed on your device?")
@@ -238,7 +354,26 @@ public class AllDevice extends AppCompatActivity {
                             @Override
                             public void onInput(MaterialDialog dialog, CharSequence input) {
 
-                                Toast.makeText(view.getContext(), "CPU: " + input + " GHz", Toast.LENGTH_SHORT).show();
+                                progressDialog.show();
+
+                                Call<AllShortDetails> call = apiInterface.sortDeviceByProcessorSpeed(Float.parseFloat(input.toString()));
+
+                                call.enqueue(new Callback<AllShortDetails>() {
+                                    @Override
+                                    public void onResponse(Call<AllShortDetails> call, Response<AllShortDetails> response)
+                                    {
+                                        ArrayList<MobileShortDetail> allDevices = (ArrayList<MobileShortDetail>) response.body().getDevices();
+
+                                        DeviceShortDetailAdapter allDevicesAdapter = new DeviceShortDetailAdapter(AllDevice.this, allDevices, allDevices.size());
+                                        allDevicesGridRecycler.setAdapter(new SlideInBottomAnimationAdapter(allDevicesAdapter));
+                                        progressDialog.dismiss();
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<AllShortDetails> call, Throwable t) {
+                                        progressDialog.dismiss();
+                                    }
+                                });
 
                             }
                         }).show();
@@ -248,6 +383,7 @@ public class AllDevice extends AppCompatActivity {
         fabPrice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
+                fabMenu.close(false);
                 new MaterialDialog.Builder(view.getContext())
                         .title("Price")
                         .content("How many money do you want to spent on your device?")
@@ -257,7 +393,26 @@ public class AllDevice extends AppCompatActivity {
                             @Override
                             public void onInput(MaterialDialog dialog, CharSequence input) {
 
-                                Toast.makeText(view.getContext(), "Price: " + input + " BDT", Toast.LENGTH_SHORT).show();
+                                progressDialog.show();
+
+                                Call<AllShortDetails> call = apiInterface.sortDeviceByPrice(Integer.parseInt(input.toString()));
+
+                                call.enqueue(new Callback<AllShortDetails>() {
+                                    @Override
+                                    public void onResponse(Call<AllShortDetails> call, Response<AllShortDetails> response)
+                                    {
+                                        ArrayList<MobileShortDetail> allDevices = (ArrayList<MobileShortDetail>) response.body().getDevices();
+
+                                        DeviceShortDetailAdapter allDevicesAdapter = new DeviceShortDetailAdapter(AllDevice.this, allDevices, allDevices.size());
+                                        allDevicesGridRecycler.setAdapter(new SlideInBottomAnimationAdapter(allDevicesAdapter));
+                                        progressDialog.dismiss();
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<AllShortDetails> call, Throwable t) {
+                                        progressDialog.dismiss();
+                                    }
+                                });
 
                             }
                         }).show();

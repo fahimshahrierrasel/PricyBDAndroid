@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     public static final String TITLE = "TITLE";
+    public static final String CATAGORY = "CATAGORY";
 
     int[] bannerImages = {
             R.drawable.power_bank,
@@ -100,6 +101,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
                 Intent allDevicesIntent = new Intent(MainActivity.this, AllDevice.class);
                 allDevicesIntent.putExtra(TITLE, "Trending");
+                allDevicesIntent.putExtra(CATAGORY,"Normal");
                 startActivity(allDevicesIntent);
             }
         });
@@ -117,6 +119,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
                 Intent allDevicesIntent = new Intent(MainActivity.this, AllDevice.class);
                 allDevicesIntent.putExtra(TITLE, "New Arrival");
+                allDevicesIntent.putExtra(CATAGORY,"Normal");
                 startActivity(allDevicesIntent);
             }
         });

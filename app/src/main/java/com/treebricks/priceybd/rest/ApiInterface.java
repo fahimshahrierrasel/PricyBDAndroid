@@ -30,4 +30,29 @@ public interface ApiInterface
 
     @GET("brands")
     Call<AllBrands> getBrands();
+
+    @GET("directsortdevices/Brand/{brandName}")
+    Call<AllShortDetails> getDeviceByBrand(@Path("brandName") String brandName);
+
+    @GET("sortdevices/BatteryCapacity/{capacity}")
+    Call<AllShortDetails> sortDeviceByBattery(@Path("capacity") int capacity);
+
+    @GET("sortdevices/MemoryInternal/{romSize}")
+    Call<AllShortDetails> sortDeviceByRom(@Path("romSize") int romSize);
+
+    @GET("sortdevices/MemoryRam/{ramSize}")
+    Call<AllShortDetails> sortDeviceByRam(@Path("ramSize") int ramSize);
+
+    @GET("sortdevices/SecondaryCamera/{camera}")
+    Call<AllShortDetails> sortDeviceBySelfieCamera(@Path("camera") int camera);
+
+    @GET("sortdevices/PrimaryCamera/{camera}")
+    Call<AllShortDetails> sortDeviceByPrimaryCamera(@Path("camera") int camera);
+
+    @GET("sortdevices/Cpu/{speed}")
+    Call<AllShortDetails> sortDeviceByProcessorSpeed(@Path("speed") float speed);
+
+    @GET("sortbyprice/{price}")
+    Call<AllShortDetails> sortDeviceByPrice(@Path("price") int price);
+
 }
