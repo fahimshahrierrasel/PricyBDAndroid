@@ -1,6 +1,7 @@
 package com.treebricks.priceybd.activities;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -26,6 +27,16 @@ import android.widget.Toast;
 import com.jude.rollviewpager.OnItemClickListener;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.adapter.LoopPagerAdapter;
+import com.mikepenz.iconics.IconicsDrawable;
+import com.mikepenz.materialdrawer.AccountHeader;
+import com.mikepenz.materialdrawer.AccountHeaderBuilder;
+import com.mikepenz.materialdrawer.Drawer;
+import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.model.ExpandableDrawerItem;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
+import com.mikepenz.materialdrawer.model.SectionDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.treebricks.priceybd.R;
 import com.treebricks.priceybd.adapters.BrandsAdapter;
 import com.treebricks.priceybd.adapters.DeviceShortDetailAdapter;
@@ -43,10 +54,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+{
 
     public static final String TITLE = "TITLE";
     public static final String CATAGORY = "CATAGORY";
+
+    private Drawer result = null;
+    private AccountHeader accountHeader = null;
 
     int[] bannerImages = {
             R.drawable.power_bank,
@@ -190,50 +204,124 @@ public class MainActivity extends AppCompatActivity
 
 
         // Navigation Drawer
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+        //DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        //ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+        //        this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        //drawer.addDrawerListener(toggle);
+        //toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        //NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+       // navigationView.setNavigationItemSelectedListener(this);
+
+
+        accountHeader = new AccountHeaderBuilder()
+                .withActivity(this)
+                .withHeaderBackground(R.drawable.cover_photo)
+                .withCompactStyle(false)
+                .withSavedInstance(savedInstanceState)
+                .build();
+
+
+
+
+        result = new DrawerBuilder()
+                .withActivity(this)
+                .withToolbar(toolbar)
+                .withAccountHeader(accountHeader)
+                .withShowDrawerOnFirstLaunch(true)
+                .addDrawerItems(
+                        new SecondaryDrawerItem().withName("Ram").withIcon(R.drawable.ic_memory).withIdentifier(1),
+                        new SecondaryDrawerItem().withName("Rom").withIcon(R.drawable.ic_memory).withIdentifier(2),
+                        new SecondaryDrawerItem().withName("Battery").withIcon(R.drawable.ic_battery).withIdentifier(3),
+                        new SecondaryDrawerItem().withName("Selfie Camera").withIcon(R.drawable.ic_camera).withIdentifier(4),
+                        new SecondaryDrawerItem().withName("Primary Camera").withIcon(R.drawable.ic_camera).withIdentifier(5),
+                        new SecondaryDrawerItem().withName("Processor").withIcon(R.drawable.ic_platform).withIdentifier(6),
+                        new ExpandableDrawerItem().withName("Expandable").withSubItems(
+                                new SecondaryDrawerItem().withName("Launch").withIcon(R.drawable.ic_launch).withIdentifier(7),
+                                new SecondaryDrawerItem().withName("Features").withIcon(R.drawable.ic_features).withIdentifier(8),
+                                new SecondaryDrawerItem().withName("Miscellaneous").withIcon(R.drawable.ic_miscellaneous).withIdentifier(9)
+                        ),
+                        new SectionDrawerItem().withName("Other"),
+                        new SecondaryDrawerItem().withName("Communication").withIcon(R.drawable.ic_communication).withIdentifier(10),
+                        new SecondaryDrawerItem().withName("Display").withIcon(R.drawable.ic_display).withIdentifier(11)
+                )
+                .addStickyDrawerItems(
+                        new SecondaryDrawerItem().withName("Preferences").withIcon(android.R.drawable.ic_menu_preferences).withIdentifier(12),
+                        new SecondaryDrawerItem().withName("About").withIcon(android.R.drawable.ic_menu_info_details).withIdentifier(13)
+                )
+                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    @Override
+                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+
+                        if(drawerItem != null)
+                        {
+                            switch ((int)drawerItem.getIdentifier())
+                            {
+                                case 1:
+                                    Toast.makeText(MainActivity.this, "Item-"+drawerItem.getIdentifier(), Toast.LENGTH_SHORT ).show();
+                                    break;
+                                case 2:
+                                    Toast.makeText(MainActivity.this, "Item-"+drawerItem.getIdentifier(), Toast.LENGTH_SHORT ).show();
+                                    break;
+                                case 3:
+                                    Toast.makeText(MainActivity.this, "Item-"+drawerItem.getIdentifier(), Toast.LENGTH_SHORT ).show();
+                                    break;
+                                case 4:
+                                    Toast.makeText(MainActivity.this, "Item-"+drawerItem.getIdentifier(), Toast.LENGTH_SHORT ).show();
+                                    break;
+                                case 5:
+                                    Toast.makeText(MainActivity.this, "Item-"+drawerItem.getIdentifier(), Toast.LENGTH_SHORT ).show();
+                                    break;
+                                case 6:
+                                    Toast.makeText(MainActivity.this, "Item-"+drawerItem.getIdentifier(), Toast.LENGTH_SHORT ).show();
+                                    break;
+                                case 7:
+                                    Toast.makeText(MainActivity.this, "Item-"+drawerItem.getIdentifier(), Toast.LENGTH_SHORT ).show();
+                                    break;
+                                case 8:
+                                    Toast.makeText(MainActivity.this, "Item-"+drawerItem.getIdentifier(), Toast.LENGTH_SHORT ).show();
+                                    break;
+                                case 9:
+                                    Toast.makeText(MainActivity.this, "Item-"+drawerItem.getIdentifier(), Toast.LENGTH_SHORT ).show();
+                                    break;
+                                case 10:
+                                    Toast.makeText(MainActivity.this, "Item-"+drawerItem.getIdentifier(), Toast.LENGTH_SHORT ).show();
+                                    break;
+                                case 11:
+                                    Toast.makeText(MainActivity.this, "Item-"+drawerItem.getIdentifier(), Toast.LENGTH_SHORT ).show();
+                                    break;
+                                case 12:
+                                    Toast.makeText(MainActivity.this, "Item-"+drawerItem.getIdentifier(), Toast.LENGTH_SHORT ).show();
+                                    break;
+                                case 13:
+                                    Toast.makeText(MainActivity.this, "Item-"+drawerItem.getIdentifier(), Toast.LENGTH_SHORT ).show();
+                                    break;
+                                default:
+                                    Toast.makeText(MainActivity.this, "Default", Toast.LENGTH_SHORT ).show();
+                                    break;
+                            }
+                        }
+
+                        return false;
+                    }
+                })
+                .withSavedInstance(savedInstanceState)
+                .build();
+
+
+
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
+        if (result.isDrawerOpen()) {
+            result.closeDrawer();
         } else {
             super.onBackPressed();
         }
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
 
 
     // TestLoopAdapter for RollViewPager Which is used for Home Page banner
