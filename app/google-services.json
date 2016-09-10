@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "275700515312",
+    "firebase_url": "https://priceybd-a3d0f.firebaseio.com",
+    "project_id": "priceybd-a3d0f",
+    "storage_bucket": "priceybd-a3d0f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:275700515312:android:49631d962bbef26d",
+        "android_client_info": {
+          "package_name": "com.treebricks.priceybd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "275700515312-fkd90m58iago4m4h8ribn44s10f8vnpl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.treebricks.priceybd",
+            "certificate_hash": "635910496CC9B6908164F53C8EC275D904990480"
+          }
+        },
+        {
+          "client_id": "275700515312-3h47moothqfcn6nuufomorgnas3u5jr7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsWgjFDARtH-od57gbEdgx_OrnvFMbc3w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "275700515312-3h47moothqfcn6nuufomorgnas3u5jr7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

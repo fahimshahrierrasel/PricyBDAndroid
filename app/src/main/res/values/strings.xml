@@ -44,5 +44,6 @@
     <string name="protection_title">Protection</string>
     <string name="protection">Corning Gorilla Glass 4</string>
     <string name="display_feature">TouchWiz UI</string>
+    <string name="title_activity_shop">Shop</string>
 
 </resources>

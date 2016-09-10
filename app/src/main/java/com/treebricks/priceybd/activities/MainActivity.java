@@ -202,33 +202,18 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-
-        // Navigation Drawer
-        //DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        //ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-        //        this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        //drawer.addDrawerListener(toggle);
-        //toggle.syncState();
-
-        //NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-       // navigationView.setNavigationItemSelectedListener(this);
-
-
+        // Navigation Drawer Header
         accountHeader = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withHeaderBackground(R.drawable.cover_photo)
                 .withCompactStyle(false)
                 .withSavedInstance(savedInstanceState)
                 .build();
-
-
-
-
+        // Navigation Drawer
         result = new DrawerBuilder()
                 .withActivity(this)
                 .withToolbar(toolbar)
                 .withAccountHeader(accountHeader)
-                .withShowDrawerOnFirstLaunch(true)
                 .addDrawerItems(
                         new SecondaryDrawerItem().withName("Ram").withIcon(R.drawable.ic_memory).withIdentifier(1),
                         new SecondaryDrawerItem().withName("Rom").withIcon(R.drawable.ic_memory).withIdentifier(2),
@@ -320,9 +305,6 @@ public class MainActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
-
-
-
 
     // TestLoopAdapter for RollViewPager Which is used for Home Page banner
     private class TestLoopAdapter extends LoopPagerAdapter {

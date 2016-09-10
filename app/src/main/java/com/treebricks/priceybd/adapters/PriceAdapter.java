@@ -1,6 +1,8 @@
 package com.treebricks.priceybd.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.treebricks.priceybd.R;
+import com.treebricks.priceybd.activities.ShopActivity;
 import com.treebricks.priceybd.models.MobilePrice;
 import com.treebricks.priceybd.models.Shop;
 import com.treebricks.priceybd.rest.ApiClient;
@@ -23,6 +26,12 @@ import retrofit2.Response;
  */
 public class PriceAdapter extends RecyclerView.Adapter<PriceAdapter.PriceViewHolder> {
 
+    public static final String SHOP_NAME = "SHOP_NAME";
+    public static final String SHOP_ADDRESS = "SHOP_ADDRESS";
+    public static final String SHOP_MOBILE_NUMBER = "SHOP_MOBILE_NUMBER";
+    public static final String SHOP_EMAIL = "SHOP_EMAIL";
+    public static final String LATITUDE = "LATITUDE";
+    public static final String LONGITUDE = "LONGITUDE";
     Context context;
     ArrayList<MobilePrice> mobilePrices;
 
@@ -77,7 +86,17 @@ public class PriceAdapter extends RecyclerView.Adapter<PriceAdapter.PriceViewHol
         holder.priceCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(), newShop[0].toString(),Toast.LENGTH_LONG).show();
+
+                Intent shopIntent = new Intent(context, ShopActivity.class);
+                Bundle sentBundle = new Bundle();
+                sentBundle.putString(SHOP_NAME, newShop[0].getShopName());
+                sentBundle.putString(SHOP_ADDRESS, newShop[0].getShopAddress());
+                sentBundle.putString(SHOP_MOBILE_NUMBER, newShop[0].getShopMobileNumber());
+                sentBundle.putString(SHOP_EMAIL, newShop[0].getShopMail());
+                sentBundle.putString(LATITUDE, newShop[0].getLatitude());
+                sentBundle.putString(LONGITUDE, newShop[0].getLongitude());
+                shopIntent.putExtras(sentBundle);
+                context.startActivity(shopIntent);
             }
         });
 
