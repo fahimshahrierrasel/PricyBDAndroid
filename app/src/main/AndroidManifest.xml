@@ -2,10 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.treebricks.priceybd">
 
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-
-
 
     <application
         android:allowBackup="true"
@@ -31,11 +28,15 @@
         <activity
             android:name=".activities.ShopActivity"
             android:label="@string/title_activity_shop"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAHkKhxAjMrag8iImbDr9lKSKwsdm9J0yA"/>
+            android:value="AIzaSyAHkKhxAjMrag8iImbDr9lKSKwsdm9J0yA" />
+
+        <activity android:name=".activities.CompareActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="landscape"/>
     </application>
 
 </manifest>

@@ -1,6 +1,9 @@
 # Created by https://www.gitignore.io/api/android
 
 ### Android ###
+# Mac OS default files
+*.DS_Store
+
 # Built application files
 *.apk
 *.ap_

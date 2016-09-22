@@ -215,24 +215,23 @@ public class MainActivity extends AppCompatActivity
                 .withToolbar(toolbar)
                 .withAccountHeader(accountHeader)
                 .addDrawerItems(
-                        new SecondaryDrawerItem().withName("Ram").withIcon(R.drawable.ic_memory).withIdentifier(1),
-                        new SecondaryDrawerItem().withName("Rom").withIcon(R.drawable.ic_memory).withIdentifier(2),
-                        new SecondaryDrawerItem().withName("Battery").withIcon(R.drawable.ic_battery).withIdentifier(3),
-                        new SecondaryDrawerItem().withName("Selfie Camera").withIcon(R.drawable.ic_camera).withIdentifier(4),
-                        new SecondaryDrawerItem().withName("Primary Camera").withIcon(R.drawable.ic_camera).withIdentifier(5),
-                        new SecondaryDrawerItem().withName("Processor").withIcon(R.drawable.ic_platform).withIdentifier(6),
-                        new ExpandableDrawerItem().withName("Expandable").withSubItems(
-                                new SecondaryDrawerItem().withName("Launch").withIcon(R.drawable.ic_launch).withIdentifier(7),
-                                new SecondaryDrawerItem().withName("Features").withIcon(R.drawable.ic_features).withIdentifier(8),
-                                new SecondaryDrawerItem().withName("Miscellaneous").withIcon(R.drawable.ic_miscellaneous).withIdentifier(9)
-                        ),
-                        new SectionDrawerItem().withName("Other"),
-                        new SecondaryDrawerItem().withName("Communication").withIcon(R.drawable.ic_communication).withIdentifier(10),
-                        new SecondaryDrawerItem().withName("Display").withIcon(R.drawable.ic_display).withIdentifier(11)
+                        new SecondaryDrawerItem().withName("Compare").withIcon(R.drawable.nav_compare).withIdentifier(1),
+                        new SecondaryDrawerItem().withName("Trending").withIcon(R.drawable.nav_trending).withIdentifier(2),
+                        new SecondaryDrawerItem().withName("New Arrivals").withIcon(R.drawable.nav_new).withIdentifier(3),
+                        new ExpandableDrawerItem().withName("Filter by").withSubItems(
+                                new SecondaryDrawerItem().withName("Price").withIcon(R.drawable.nav_price).withIdentifier(4),
+                                new SecondaryDrawerItem().withName("Rom").withIcon(R.drawable.nav_rom).withIdentifier(5),
+                                new SecondaryDrawerItem().withName("Ram").withIcon(R.drawable.nav_ram).withIdentifier(6),
+                                new SecondaryDrawerItem().withName("Battery").withIcon(R.drawable.nav_battery).withIdentifier(7),
+                                new SecondaryDrawerItem().withName("Selfie Camera").withIcon(R.drawable.nav_selfie).withIdentifier(8),
+                                new SecondaryDrawerItem().withName("Primary Camera").withIcon(R.drawable.nav_main_cam).withIdentifier(9),
+                                new SecondaryDrawerItem().withName("Processor").withIcon(R.drawable.nav_cpu).withIdentifier(10),
+                                new SecondaryDrawerItem().withName("Display").withIcon(R.drawable.nav_display).withIdentifier(11)
+                        )
                 )
                 .addStickyDrawerItems(
-                        new SecondaryDrawerItem().withName("Preferences").withIcon(android.R.drawable.ic_menu_preferences).withIdentifier(12),
-                        new SecondaryDrawerItem().withName("About").withIcon(android.R.drawable.ic_menu_info_details).withIdentifier(13)
+                        new SecondaryDrawerItem().withName("Help & Support").withIcon(R.drawable.nav_support).withIdentifier(12),
+                        new SecondaryDrawerItem().withName("Preferences").withIcon(R.drawable.nav_preference).withIdentifier(13)
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
@@ -243,7 +242,8 @@ public class MainActivity extends AppCompatActivity
                             switch ((int)drawerItem.getIdentifier())
                             {
                                 case 1:
-                                    Toast.makeText(MainActivity.this, "Item-"+drawerItem.getIdentifier(), Toast.LENGTH_SHORT ).show();
+                                    Intent compareIntent = new Intent(MainActivity.this, CompareActivity.class);
+                                    startActivity(compareIntent);
                                     break;
                                 case 2:
                                     Toast.makeText(MainActivity.this, "Item-"+drawerItem.getIdentifier(), Toast.LENGTH_SHORT ).show();
