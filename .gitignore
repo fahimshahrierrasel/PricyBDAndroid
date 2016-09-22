@@ -1,6 +1,17 @@
 # Created by https://www.gitignore.io/api/android
 
 ### Android ###
+#
+## Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+## Folder config file
+Desktop.ini
+
+## Recycle Bin used on file shares
+$RECYCLE.BIN/
+
 # Mac OS default files
 *.DS_Store
 
@@ -40,6 +51,7 @@ captures/
 
 # Intellij
 *.iml
+.idea/
 .idea/workspace.xml
 .idea/libraries
 .idea/misc.xml
