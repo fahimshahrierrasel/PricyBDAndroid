@@ -242,15 +242,26 @@ public class MainActivity extends AppCompatActivity
                             switch ((int)drawerItem.getIdentifier())
                             {
                                 case 1:
+                                    Toast.makeText(MainActivity.this, "This is only preview comparision for device 1 and 3.", Toast.LENGTH_SHORT ).show();
                                     Intent compareIntent = new Intent(MainActivity.this, CompareActivity.class);
                                     startActivity(compareIntent);
                                     break;
                                 case 2:
-                                    Toast.makeText(MainActivity.this, "Item-"+drawerItem.getIdentifier(), Toast.LENGTH_SHORT ).show();
+                                {
+                                    Intent trendingIntent = new Intent(MainActivity.this, AllDevice.class);
+                                    trendingIntent.putExtra(TITLE, "Trending");
+                                    trendingIntent.putExtra(CATAGORY,"Normal");
+                                    startActivity(trendingIntent);
                                     break;
+                                }
                                 case 3:
-                                    Toast.makeText(MainActivity.this, "Item-"+drawerItem.getIdentifier(), Toast.LENGTH_SHORT ).show();
+                                {
+                                    Intent newArrivalIntent = new Intent(MainActivity.this, AllDevice.class);
+                                    newArrivalIntent.putExtra(TITLE, "New Arrival");
+                                    newArrivalIntent.putExtra(CATAGORY,"Normal");
+                                    startActivity(newArrivalIntent);
                                     break;
+                                }
                                 case 4:
                                     Toast.makeText(MainActivity.this, "Item-"+drawerItem.getIdentifier(), Toast.LENGTH_SHORT ).show();
                                     break;
@@ -292,8 +303,6 @@ public class MainActivity extends AppCompatActivity
                 })
                 .withSavedInstance(savedInstanceState)
                 .build();
-
-
 
     }
 

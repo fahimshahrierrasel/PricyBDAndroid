@@ -43,5 +43,6 @@ dependencies {
         transitive = true
     }
     compile 'com.google.android.gms:play-services-maps:9.6.0'
+    compile 'com.android.support:percent:24.2.1'
 }
 apply plugin: 'com.google.gms.google-services'

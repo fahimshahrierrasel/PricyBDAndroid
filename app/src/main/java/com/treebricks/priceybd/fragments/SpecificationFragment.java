@@ -198,9 +198,13 @@ public class SpecificationFragment extends Fragment
         TextView performance = (TextView) rootView.findViewById(R.id.performance);
         allTextView.add(performance);
 
+        Bundle recivedBundle = getArguments();
 
-        int mobileId = getArguments().getInt(MOBILE_ID);
-
+        int mobileId = 1;
+        if(recivedBundle != null)
+        {
+            mobileId = recivedBundle.getInt(MOBILE_ID);
+        }
 
         new SpecificaitonTask(SpecificationFragment.this.getContext(), mobileId, allTextView).execute();
 
