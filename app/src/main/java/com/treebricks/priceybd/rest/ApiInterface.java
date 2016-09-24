@@ -1,6 +1,7 @@
 package com.treebricks.priceybd.rest;
 
 import com.treebricks.priceybd.models.AllBrands;
+import com.treebricks.priceybd.models.AllModels;
 import com.treebricks.priceybd.models.AllPrices;
 import com.treebricks.priceybd.models.AllShortDetails;
 import com.treebricks.priceybd.models.MobileDetail;
@@ -18,6 +19,9 @@ public interface ApiInterface
 {
     @GET("device/{id}")
     Call<MobileDetail> getMobileDetail(@Path("id")int id);
+
+    @GET("devicebyname/{name}")
+    Call<MobileDetail> getMobileDetailbyName(@Path("id")String name);
 
     @GET("devicesshortinfo")
     Call<AllShortDetails> getAllMobileShortDetail();
@@ -54,5 +58,11 @@ public interface ApiInterface
 
     @GET("sortbyprice/{price}")
     Call<AllShortDetails> sortDeviceByPrice(@Path("price") int price);
+
+    @GET("alldevicesname")
+    Call<AllModels> getAllModelNames();
+
+    @GET("shortinfo/{modelName}")
+    Call<MobileShortDetail> getShortInfo(@Path("modelName") String ModelName);
 
 }

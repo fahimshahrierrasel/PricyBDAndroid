@@ -1,46 +1,37 @@
 package com.treebricks.priceybd.activities;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.NavigationView;
 import android.support.v4.content.res.ResourcesCompat;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SnapHelper;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.jude.rollviewpager.OnItemClickListener;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.adapter.LoopPagerAdapter;
-import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.ExpandableDrawerItem;
-import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
-import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.treebricks.priceybd.R;
 import com.treebricks.priceybd.adapters.BrandsAdapter;
 import com.treebricks.priceybd.adapters.DeviceShortDetailAdapter;
 import com.treebricks.priceybd.models.AllBrands;
+import com.treebricks.priceybd.models.AllModels;
 import com.treebricks.priceybd.models.AllShortDetails;
 import com.treebricks.priceybd.models.Brand;
 import com.treebricks.priceybd.models.MobileShortDetail;
@@ -48,6 +39,7 @@ import com.treebricks.priceybd.rest.ApiClient;
 import com.treebricks.priceybd.rest.ApiInterface;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -58,6 +50,8 @@ public class MainActivity extends AppCompatActivity
 
     public static final String TITLE = "TITLE";
     public static final String CATAGORY = "CATAGORY";
+    public static final String FIRST_DEVICE = "FIRST_DEVICE";
+    public static final String SECOND_DEVICE = "SECOND_DEVICE";
 
     private Drawer result = null;
     private AccountHeader accountHeader = null;
@@ -73,6 +67,7 @@ public class MainActivity extends AppCompatActivity
     Button trendingMoreButton;
     Button brandMoreButton;
     Button newArrivalMoreButton;
+    ArrayAdapter<String> completeTextAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,7 +145,7 @@ public class MainActivity extends AppCompatActivity
 
 
 
-        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        final ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
         Call<AllShortDetails> allDevicesCall = apiInterface.getAllMobileShortDetail();
 
@@ -173,7 +168,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        Call<AllBrands> allBrandsCall = apiInterface.getBrands();
+        final Call<AllBrands> allBrandsCall = apiInterface.getBrands();
 
         allBrandsCall.enqueue(new Callback<AllBrands>() {
             @Override
@@ -199,6 +194,22 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Toast.makeText(MainActivity.this, "All Brands Avilable soon!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        Call<AllModels> allModelsCall = apiInterface.getAllModelNames();
+        allModelsCall.enqueue(new Callback<AllModels>() {
+            @Override
+            public void onResponse(Call<AllModels> call, Response<AllModels> response) {
+                List<String> allModelsName = (List<String>) response.body().getModels();
+                completeTextAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_dropdown_item_1line, allModelsName);
+
+            }
+
+            @Override
+            public void onFailure(Call<AllModels> call, Throwable t) {
+
             }
         });
 
@@ -235,17 +246,47 @@ public class MainActivity extends AppCompatActivity
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
-                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                    public boolean onItemClick(final View view, int position, IDrawerItem drawerItem) {
 
                         if(drawerItem != null)
                         {
                             switch ((int)drawerItem.getIdentifier())
                             {
                                 case 1:
-                                    Toast.makeText(MainActivity.this, "This is only preview comparision for device 1 and 3.", Toast.LENGTH_SHORT ).show();
-                                    Intent compareIntent = new Intent(MainActivity.this, CompareActivity.class);
-                                    startActivity(compareIntent);
+                                {
+                                    final MaterialDialog compareDialog = new MaterialDialog.Builder(view.getContext())
+                                            .customView(R.layout.compare_dialog_layout, true)
+                                            .title("Compare")
+                                            .build();
+
+                                    final View dialog = compareDialog.getCustomView();
+                                    final AutoCompleteTextView device1 = (AutoCompleteTextView) dialog.findViewById(R.id.device1);
+                                    final AutoCompleteTextView device2 = (AutoCompleteTextView) dialog.findViewById(R.id.device2);
+                                    final Button compareSubmit = (Button) dialog.findViewById(R.id.compare_submit);
+
+                                    device1.setAdapter(completeTextAdapter);
+                                    device2.setAdapter(completeTextAdapter);
+
+
+                                    compareSubmit.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+                                            Intent compareIntent = new Intent(MainActivity.this, CompareActivity.class);
+
+                                            Bundle sentBundle = new Bundle();
+                                            sentBundle.putString(FIRST_DEVICE, device1.getText().toString());
+                                            sentBundle.putString(SECOND_DEVICE, device2.getText().toString());
+
+                                            compareIntent.putExtras(sentBundle);
+                                            startActivity(compareIntent);
+                                        }
+                                    });
+
+
+                                    compareDialog.show();
+
                                     break;
+                                }
                                 case 2:
                                 {
                                     Intent trendingIntent = new Intent(MainActivity.this, AllDevice.class);
@@ -341,7 +382,10 @@ public class MainActivity extends AppCompatActivity
                 }
             });
             view.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+            view.setLayoutParams(new ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT));
+
             view.setImageDrawable(ResourcesCompat.getDrawable(getResources(), imgs[position], null));
 
             return view;

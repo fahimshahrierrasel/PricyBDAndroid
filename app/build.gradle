@@ -42,7 +42,8 @@ dependencies {
     compile('com.mikepenz:materialdrawer:5.6.0@aar') {
         transitive = true
     }
-    compile 'com.google.android.gms:play-services-maps:9.6.0'
+    compile 'com.google.android.gms:play-services-maps:9.6.1'
     compile 'com.android.support:percent:24.2.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha8'
 }
 apply plugin: 'com.google.gms.google-services'
