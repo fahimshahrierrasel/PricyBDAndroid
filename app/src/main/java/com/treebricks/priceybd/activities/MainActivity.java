@@ -2,11 +2,13 @@ package com.treebricks.priceybd.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -271,14 +273,25 @@ public class MainActivity extends AppCompatActivity
                                     compareSubmit.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View view) {
-                                            Intent compareIntent = new Intent(MainActivity.this, CompareActivity.class);
 
-                                            Bundle sentBundle = new Bundle();
-                                            sentBundle.putString(FIRST_DEVICE, device1.getText().toString());
-                                            sentBundle.putString(SECOND_DEVICE, device2.getText().toString());
+                                            String device1Text = device1.getText().toString();
+                                            String device2Text = device2.getText().toString();
 
-                                            compareIntent.putExtras(sentBundle);
-                                            startActivity(compareIntent);
+                                            if (device1Text.isEmpty() || "".equals(device1Text)
+                                                    || device2Text.isEmpty() || "".equals(device2Text))
+                                            {
+                                                Toast.makeText(MainActivity.this, "Please, Do not let any field empty!", Toast.LENGTH_SHORT ).show();
+                                            } else
+                                            {
+                                                Intent compareIntent = new Intent(MainActivity.this, CompareActivity.class);
+
+                                                Bundle sentBundle = new Bundle();
+                                                sentBundle.putString(FIRST_DEVICE, device1.getText().toString());
+                                                sentBundle.putString(SECOND_DEVICE, device2.getText().toString());
+
+                                                compareIntent.putExtras(sentBundle);
+                                                startActivity(compareIntent);
+                                            }
                                         }
                                     });
 
@@ -304,29 +317,133 @@ public class MainActivity extends AppCompatActivity
                                     break;
                                 }
                                 case 4:
-                                    Toast.makeText(MainActivity.this, "Item-"+drawerItem.getIdentifier(), Toast.LENGTH_SHORT ).show();
+                                {
+                                    new MaterialDialog.Builder(MainActivity.this)
+                                            .title("Filter by Price")
+                                            .content("Find your desire mobile phone within your price range.")
+                                            .inputType(InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_CLASS_NUMBER)
+                                            .inputRangeRes(3, 7, R.color.md_red_500)
+                                            .input("Enter the price", null, new MaterialDialog.InputCallback() {
+                                                @Override
+                                                public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+                                                    Toast.makeText(MainActivity.this, "Price is " + input.toString(), Toast.LENGTH_SHORT ).show();
+
+                                                }
+                                            }).show();
                                     break;
+                                }
                                 case 5:
-                                    Toast.makeText(MainActivity.this, "Item-"+drawerItem.getIdentifier(), Toast.LENGTH_SHORT ).show();
+                                {
+                                    new MaterialDialog.Builder(MainActivity.this)
+                                            .title("Filter by Rom")
+                                            .content("Find your perfect phone with desired Rom size.")
+                                            .inputType(InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_CLASS_NUMBER)
+                                            .inputRangeRes(1, 4, R.color.md_red_500)
+                                            .input("Enter the Rom size", "16", new MaterialDialog.InputCallback() {
+                                                @Override
+                                                public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+                                                    Toast.makeText(MainActivity.this, "Rom Size is " + input.toString(), Toast.LENGTH_SHORT ).show();
+
+                                                }
+                                            }).show();
                                     break;
+                                }
                                 case 6:
-                                    Toast.makeText(MainActivity.this, "Item-"+drawerItem.getIdentifier(), Toast.LENGTH_SHORT ).show();
+                                {
+                                    new MaterialDialog.Builder(MainActivity.this)
+                                            .title("Filter by Ram")
+                                            .content("Find your perfect phone with desired Ram size.")
+                                            .inputType(InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_CLASS_NUMBER)
+                                            .inputRangeRes(1, 4, R.color.md_red_500)
+                                            .input("Enter the Ram size", "1.5", new MaterialDialog.InputCallback() {
+                                                @Override
+                                                public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+                                                    Toast.makeText(MainActivity.this, "Ram Size is " + input.toString(), Toast.LENGTH_SHORT ).show();
+
+                                                }
+                                            }).show();
                                     break;
+                                }
                                 case 7:
-                                    Toast.makeText(MainActivity.this, "Item-"+drawerItem.getIdentifier(), Toast.LENGTH_SHORT ).show();
+                                {
+                                    new MaterialDialog.Builder(MainActivity.this)
+                                            .title("Filter by Battery Capacity")
+                                            .content("Find your perfect phone with desired Battery capacity.")
+                                            .inputType(InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_CLASS_NUMBER)
+                                            .inputRangeRes(3, 6, R.color.md_red_500)
+                                            .input("Enter the Battery capacity", "2250", new MaterialDialog.InputCallback() {
+                                                @Override
+                                                public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+                                                    Toast.makeText(MainActivity.this, "Battery Capacity is " + input.toString(), Toast.LENGTH_SHORT ).show();
+
+                                                }
+                                            }).show();
                                     break;
+                                }
                                 case 8:
-                                    Toast.makeText(MainActivity.this, "Item-"+drawerItem.getIdentifier(), Toast.LENGTH_SHORT ).show();
+                                {
+                                    new MaterialDialog.Builder(MainActivity.this)
+                                            .title("Filter by Selfie Camera")
+                                            .content("Find your perfect phone with perfect selfie Camera.")
+                                            .inputType(InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_CLASS_NUMBER)
+                                            .inputRangeRes(1, 4, R.color.md_red_500)
+                                            .input("Enter the Selfie Camera", "3.5", new MaterialDialog.InputCallback() {
+                                                @Override
+                                                public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+                                                    Toast.makeText(MainActivity.this, "Selfie Camera is " + input.toString(), Toast.LENGTH_SHORT ).show();
+
+                                                }
+                                            }).show();
                                     break;
+                                }
                                 case 9:
-                                    Toast.makeText(MainActivity.this, "Item-"+drawerItem.getIdentifier(), Toast.LENGTH_SHORT ).show();
+                                {
+                                    new MaterialDialog.Builder(MainActivity.this)
+                                            .title("Filter by Primary Camera")
+                                            .content("Find your perfect phone with perfect Primary Camera.")
+                                            .inputType(InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_CLASS_NUMBER)
+                                            .inputRangeRes(1, 4, R.color.md_red_500)
+                                            .input("Enter the Primary Camera", "12.5", new MaterialDialog.InputCallback() {
+                                                @Override
+                                                public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+                                                    Toast.makeText(MainActivity.this, "Primary Camera is " + input.toString(), Toast.LENGTH_SHORT ).show();
+
+                                                }
+                                            }).show();
                                     break;
+                                }
                                 case 10:
-                                    Toast.makeText(MainActivity.this, "Item-"+drawerItem.getIdentifier(), Toast.LENGTH_SHORT ).show();
+                                {
+                                    new MaterialDialog.Builder(MainActivity.this)
+                                            .title("Filter by Processor Speed")
+                                            .content("Find your perfect phone with perfect processor speed.")
+                                            .inputType(InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_CLASS_NUMBER)
+                                            .inputRangeRes(1, 4, R.color.md_red_500)
+                                            .input("Enter the Processor speed", "1.5", new MaterialDialog.InputCallback() {
+                                                @Override
+                                                public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+                                                    Toast.makeText(MainActivity.this, "Processor speed is " + input.toString(), Toast.LENGTH_SHORT ).show();
+
+                                                }
+                                            }).show();
                                     break;
+                                }
                                 case 11:
-                                    Toast.makeText(MainActivity.this, "Item-"+drawerItem.getIdentifier(), Toast.LENGTH_SHORT ).show();
+                                {
+                                    new MaterialDialog.Builder(MainActivity.this)
+                                            .title("Filter by Display Size")
+                                            .content("Find your perfect phone with perfect display size.")
+                                            .inputType(InputType.TYPE_NUMBER_FLAG_DECIMAL | InputType.TYPE_CLASS_NUMBER)
+                                            .inputRangeRes(1, 5, R.color.md_red_500)
+                                            .input("Enter the Display size", "5.2", new MaterialDialog.InputCallback() {
+                                                @Override
+                                                public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+                                                    Toast.makeText(MainActivity.this, "Display size is " + input.toString(), Toast.LENGTH_SHORT ).show();
+
+                                                }
+                                            }).show();
                                     break;
+                                }
                                 case 12:
                                     Toast.makeText(MainActivity.this, "Item-"+drawerItem.getIdentifier(), Toast.LENGTH_SHORT ).show();
                                     break;
@@ -334,7 +451,6 @@ public class MainActivity extends AppCompatActivity
                                     Toast.makeText(MainActivity.this, "Item-"+drawerItem.getIdentifier(), Toast.LENGTH_SHORT ).show();
                                     break;
                                 default:
-                                    Toast.makeText(MainActivity.this, "Default", Toast.LENGTH_SHORT ).show();
                                     break;
                             }
                         }
