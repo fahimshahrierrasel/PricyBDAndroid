@@ -25,20 +25,28 @@
             android:label="@string/title_activity_device"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activities.AllDevice" />
-
         <activity
             android:name=".activities.ShopActivity"
             android:label="@string/title_activity_shop"
             android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity android:name=".activities.CompareActivity"
+        <activity
+            android:name=".activities.CompareActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".activities.PriceyPreferences"
+            android:theme="@style/Theme.AppCompat.Light">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.MainActivity"/>
+        </activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAHkKhxAjMrag8iImbDr9lKSKwsdm9J0yA" />
+
     </application>
 
 </manifest>

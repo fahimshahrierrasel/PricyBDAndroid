@@ -32,6 +32,7 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.treebricks.priceybd.R;
 import com.treebricks.priceybd.adapters.BrandsAdapter;
 import com.treebricks.priceybd.adapters.DeviceShortDetailAdapter;
+import com.treebricks.priceybd.fragments.PriceyPreferenceFragment;
 import com.treebricks.priceybd.models.AllBrands;
 import com.treebricks.priceybd.models.AllModels;
 import com.treebricks.priceybd.models.AllShortDetails;
@@ -448,8 +449,11 @@ public class MainActivity extends AppCompatActivity
                                     Toast.makeText(MainActivity.this, "Item-"+drawerItem.getIdentifier(), Toast.LENGTH_SHORT ).show();
                                     break;
                                 case 13:
-                                    Toast.makeText(MainActivity.this, "Item-"+drawerItem.getIdentifier(), Toast.LENGTH_SHORT ).show();
+                                {
+                                    Intent preference = new Intent(MainActivity.this, PriceyPreferences.class);
+                                    startActivity(preference);
                                     break;
+                                }
                                 default:
                                     break;
                             }

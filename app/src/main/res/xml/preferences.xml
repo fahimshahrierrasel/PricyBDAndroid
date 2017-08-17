@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.treebricks.priceybd.activities.PriceyPreferences">
+
+    <Preference
+        android:title="Preference1"
+        android:summary="This is Preference 1"
+        android:key="pref1"/>
+    <CheckBoxPreference
+        android:title="CheckBoxPreferences"
+        android:summary="Check Box Preferences"/>
+    <EditTextPreference
+        android:title="EditTextPreferences"
+        android:summary="Hello EditText"/>
+    <SwitchPreference
+        android:title="SwitchPreferences"
+        android:summary="Hello Switch"/>
+    <Preference
+        android:title="Preference1"
+        android:summary="This is Preference 1"
+        android:key="pref1"/>
+    <CheckBoxPreference
+        android:title="CheckBoxPreferences"
+        android:summary="Check Box Preferences"/>
+    <EditTextPreference
+        android:title="EditTextPreferences"
+        android:summary="Hello EditText"/>
+    <SwitchPreference
+        android:title="SwitchPreferences"
+        android:summary="Hello Switch"/>
+    <Preference
+        android:title="Preference1"
+        android:summary="This is Preference 1"
+        android:key="pref1"/>
+    <CheckBoxPreference
+        android:title="CheckBoxPreferences"
+        android:summary="Check Box Preferences"/>
+    <EditTextPreference
+        android:title="EditTextPreferences"
+        android:summary="Hello EditText"/>
+    <SwitchPreference
+        android:title="SwitchPreferences"
+        android:summary="Hello Switch"/>
+    <Preference
+        android:title="Preference1"
+        android:summary="This is Preference 1"
+        android:key="pref1"/>
+    <CheckBoxPreference
+        android:title="CheckBoxPreferences"
+        android:summary="Check Box Preferences"/>
+    <EditTextPreference
+        android:title="EditTextPreferences"
+        android:summary="Hello EditText"/>
+    <SwitchPreference
+        android:title="SwitchPreferences"
+        android:summary="Hello Switch"/>
+
+</PreferenceScreen>
